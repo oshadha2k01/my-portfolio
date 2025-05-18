@@ -6,23 +6,90 @@ export const dynamic = 'force-dynamic';
 export async function GET() {
   try {
     // GitHub username
-    const username = 'oshadha2k01'; // Your GitHub username
+    const username = 'oshadha2k01';
     
-    // Fetch actual repositories from GitHub API
-    const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&direction=desc`, {
-      headers: {
-        'Accept': 'application/vnd.github.v3+json',
-        // Add authorization if you need to access private repos
-        // 'Authorization': 'token YOUR_GITHUB_TOKEN'
-      },
-      cache: 'no-store' // Ensure we don't cache the response
-    });
+    // Get GitHub token from environment variable
+    const githubToken = process.env.GITHUB_TOKEN;
+    
+    if (!githubToken) {
+      console.error('GitHub token is not set in environment variables');
+      return NextResponse.json(
+        { error: 'GitHub token is not configured. Please add GITHUB_TOKEN to your environment variables.' },
+        { status: 500 }
+      );
+    }
+    
+    // Function to fetch all repositories with pagination
+    async function fetchAllRepos() {
+      let page = 1;
+      let allRepos = [];
+      let hasMoreRepos = true;
+      
+      while (hasMoreRepos) {
+        const headers = {
+          'Accept': 'application/vnd.github.v3+json',
+          'User-Agent': 'NextJS-Portfolio-App',
+          'Authorization': `token ${githubToken}` // Changed from Bearer to token
+        };
+        
+        try {
+          const response = await fetch(
+            `https://api.github.com/users/${username}/repos?per_page=100&page=${page}&sort=updated&direction=desc`,
+            {
+              headers,
+              cache: 'no-store'
+            }
+          );
 
-    if (!response.ok) {
-      throw new Error(`GitHub API responded with status: ${response.status}`);
+          if (!response.ok) {
+            const errorText = await response.text();
+            console.error('GitHub API Error:', {
+              status: response.status,
+              statusText: response.statusText,
+              headers: Object.fromEntries(response.headers.entries()),
+              body: errorText
+            });
+            
+            if (response.status === 403) {
+              throw new Error('GitHub API rate limit exceeded');
+            }
+            if (response.status === 401) {
+              throw new Error('GitHub API authentication failed - please check your token');
+            }
+            throw new Error(`GitHub API error: ${response.status} ${response.statusText} - ${errorText}`);
+          }
+
+          const repos = await response.json();
+          
+          if (!Array.isArray(repos)) {
+            console.error('Unexpected GitHub API response:', repos);
+            throw new Error('GitHub API returned invalid response format');
+          }
+          
+          allRepos = [...allRepos, ...repos];
+          
+          // If we got less than 100 repos, we've reached the end
+          if (repos.length < 100) {
+            hasMoreRepos = false;
+          } else {
+            page++;
+          }
+        } catch (fetchError) {
+          console.error('Error fetching repos page', page, ':', fetchError);
+          throw fetchError;
+        }
+      }
+      
+      return allRepos;
     }
 
-    const repos = await response.json();
+    // Fetch all repositories
+    const repos = await fetchAllRepos();
+    
+    if (!Array.isArray(repos)) {
+      console.error('Invalid repos response:', repos);
+      throw new Error('Invalid repositories response format');
+    }
     
     // Filter out repositories we don't want to show
     const filteredRepos = repos.filter(repo => 
@@ -61,7 +128,8 @@ export async function GET() {
       html_url: repo.html_url,
       homepage: repo.homepage,
       stargazers_count: repo.stargazers_count,
-      forks_count: repo.forks_count
+      forks_count: repo.forks_count,
+      updated_at: repo.updated_at
     }));
     
     // Custom sort function: priority repos first, then the rest by update date
@@ -81,91 +149,26 @@ export async function GET() {
       if (indexB >= 0) return 1;
       
       // For non-priority repos, sort by update date (most recent first)
-      const repoA = repos.find(r => r.name === a.name);
-      const repoB = repos.find(r => r.name === b.name);
-      return new Date(repoB.updated_at) - new Date(repoA.updated_at);
+      return new Date(b.updated_at) - new Date(a.updated_at);
     });
+    
+    // Log successful response
+    console.log(`Successfully fetched and formatted ${formattedRepos.length} repositories`);
     
     return NextResponse.json(formattedRepos);
   } catch (error) {
     console.error('Error in GitHub API route:', error);
     
-    // Fallback to mock data if GitHub API fails
-    const mockRepos = [
-      {
-        id: 1,
-        name: "ITPM-Project",
-        description: "IT Project Management system",
-        language: "JavaScript",
-        html_url: "https://github.com/oshadha2k01/ITPM-Project",
-        homepage: null,
-        stargazers_count: 2,
-        forks_count: 1
+    // Return error response with status code and detailed message
+    return NextResponse.json(
+      { 
+        error: error.message || 'Failed to fetch GitHub repositories',
+        details: error.stack
       },
-      {
-        id: 2,
-        name: "movie-explorer",
-        description: "Web application for browsing movies",
-        language: "JavaScript",
-        html_url: "https://github.com/oshadha2k01/movie-explorer",
-        homepage: null,
-        stargazers_count: 3,
-        forks_count: 0
-      },
-      {
-        id: 3,
-        name: "WanderVibe",
-        description: "Travel recommendation app",
-        language: "JavaScript",
-        html_url: "https://github.com/oshadha2k01/WanderVibe",
-        homepage: null,
-        stargazers_count: 5,
-        forks_count: 2
-      },
-      {
-        id: 4,
-        name: "CodeMaster",
-        description: "Coding challenge platform",
-        language: "JavaScript",
-        html_url: "https://github.com/oshadha2k01/CodeMaster",
-        homepage: null,
-        stargazers_count: 4,
-        forks_count: 1
-      },
-      {
-        id: 5,
-        name: "course-registration-application",
-        description: "Application for course registration",
-        language: "JavaScript",
-        html_url: "https://github.com/oshadha2k01/course-registration-application",
-        homepage: null,
-        stargazers_count: 3,
-        forks_count: 0
-      },
-      {
-        id: 6,
-        name: "Book-Review-Web",
-        description: "Web application for book reviews",
-        language: "JavaScript",
-        html_url: "https://github.com/oshadha2k01/Book-Review-Web",
-        homepage: null,
-        stargazers_count: 2,
-        forks_count: 1
-      },
-      {
-        id: 7,
-        name: "Project_ITP",
-        description: "IT Project for university",
-        language: "JavaScript", 
-        html_url: "https://github.com/oshadha2k01/Project_ITP",
-        homepage: null,
-        stargazers_count: 0,
-        forks_count: 0
+      { 
+        status: error.message.includes('rate limit') ? 429 : 
+               error.message.includes('authentication') ? 401 : 500 
       }
-    ];
-    
-    // In production, you might want to return an error instead
-    console.warn('Falling back to mock data due to API error');
-    return NextResponse.json(mockRepos);
+    );
   }
 }
