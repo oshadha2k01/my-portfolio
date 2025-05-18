@@ -1,36 +1,110 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# My Portfolio Website
 
-## Getting Started
+A modern, responsive portfolio website built with Next.js and Tailwind CSS, showcasing my projects, skills, and experience.
 
-First, run the development server:
+## 🌐 Live Demo
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Visit my portfolio: [https://my-portfolio-one-wine-22.vercel.app/](https://my-portfolio-oshadha2k01.vercel.app/)
+
+## 🚀 Features
+
+- **Responsive Design**: Fully responsive layout that works on all devices
+- **Dynamic Project Showcase**: Automatically fetches and displays GitHub repositories
+- **Interactive UI**: Smooth animations and transitions using Framer Motion
+- **Dark Mode**: Modern dark theme for better viewing experience
+- **Real-time Updates**: Projects section automatically updates with new GitHub repositories
+- **Skills Visualization**: Interactive skill bars with technology icons
+- **Contact Form**: Easy way for visitors to get in touch
+- **SEO Optimized**: Built with Next.js for better search engine optimization
+
+## 🛠️ Technologies Used
+
+- **Frontend Framework**: Next.js 13
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **Icons**: React Icons
+- **Version Control**: Git
+- **Deployment**: Vercel
+- **API Integration**: GitHub API
+
+## 📦 Project Structure
+
+```
+my-portfolio/
+├── src/
+│   ├── app/
+│   │   ├── components/     # Reusable components
+│   │   ├── about/         # About page
+│   │   ├── contact/       # Contact page
+│   │   ├── projects/      # Projects page
+│   │   └── api/          # API routes
+│   └── public/           # Static assets
+└── package.json
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Getting Started
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/oshadha2k01/my-portfolio.git
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. Install dependencies:
+   ```bash
+   cd my-portfolio
+   npm install
+   ```
 
-## Learn More
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🔧 Configuration
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Update your GitHub username in `src/app/api/github-ordered/route.js`
+2. Modify the project details in `src/app/components/Project.jsx`
+3. Update personal information in the About page
+4. Customize the styling in the Tailwind configuration
 
-## Deploy on Vercel
+## 📝 Features in Detail
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Project Showcase
+- Automatically fetches repositories from GitHub
+- Displays project details, tech stack, and live demos
+- Responsive grid layout with smooth animations
+- Priority-based project ordering
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Skills Section
+- Interactive skill bars with technology icons
+- Color-coded progress indicators
+- Responsive grid layout
+- Animated on scroll
+
+### Contact Form
+- Email integration
+- Form validation
+- Success/error notifications
+- Responsive design
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 👨‍💻 Author
+
+- **Oshadha Perera**
+- GitHub: [@oshadha2k01](https://github.com/oshadha2k01)
+- LinkedIn: [Oshadha Perera](https://www.linkedin.com/in/oshadha-perera/)
+
+## 🙏 Acknowledgments
+
+- Thanks to all the open-source projects that made this portfolio possible
+- Special thanks to the Next.js and Tailwind CSS communities
+- Inspired by modern portfolio designs and best practices
