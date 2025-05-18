@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Project() {
   const [repos, setRepos] = useState([]);
@@ -49,7 +50,7 @@ export default function Project() {
     setCurrentSlide((prev) => (prev === 0 ? maxSlide : prev - 1));
   };
 
-  // Enhanced image handling function with better debugging
+  // Enhanced image handling function with better debugging and case sensitivity handling
   const getProjectImage = (repo) => {
     const colors = {
       JavaScript: '#f1e05a',
@@ -63,21 +64,17 @@ export default function Project() {
     
     const bgColor = repo.language && colors[repo.language] ? colors[repo.language] : colors.default;
     
-    // Normalize the repository name to handle special characters
-    const normalizedRepoName = repo.name.toLowerCase().replace(/[^a-z0-9]/g, '-');
+    // Map repository names to their actual image files
+    const imageMap = {
+      'ITPM-Project': '/images/repos/ITPM-Project.jpeg',
+      'WanderVibe': '/images/repos/WanderVibe.png',
+      'movie-explorer': '/images/repos/movie-explorer.png'
+    };
     
-    // Log the repository name and the image path we're looking for (for debugging)
-    console.log(`Repo: ${repo.name}, Looking for image: /images/repos/${normalizedRepoName}.jpg`);
-    
-    // Try multiple image formats (jpg, png, jpeg)
     return {
       bgColor,
       repoName: repo.name,
-      // Return multiple potential image paths to try
-      jpgUrl: `/images/repos/${normalizedRepoName}.jpg`,
-      pngUrl: `/images/repos/${normalizedRepoName}.png`, 
-      jpegUrl: `/images/repos/${normalizedRepoName}.jpeg`,
-      // Fallback URL if none of the custom images work
+      imagePath: imageMap[repo.name] || null,
       fallbackUrl: `https://via.placeholder.com/300x200/${bgColor.replace('#', '')}?text=${encodeURIComponent(repo.name)}`
     };
   };
@@ -140,29 +137,25 @@ export default function Project() {
                             className="w-1/2 h-full"
                           >
                             <div className="h-full bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:translate-y-[-5px] flex flex-col">
-                              {/* Project Image - Updated with multi-format support */}
+                              {/* Project Image - Using Next.js Image component */}
                               <div className="relative h-48 w-full bg-gray-700">
-                                <img
-                                  src={projectImage.jpgUrl}
-                                  alt={`${repo.name} preview`}
-                                  className="w-full h-full object-cover"
-                                  onError={(e) => {
-                                    console.log(`Failed to load JPG for ${projectImage.repoName}, trying PNG...`);
-                                    // Try PNG if JPG fails
-                                    e.target.onerror = (e2) => {
-                                      console.log(`Failed to load PNG for ${projectImage.repoName}, trying JPEG...`);
-                                      // Try JPEG if PNG fails
-                                      e2.target.onerror = (e3) => {
-                                        console.log(`Failed to load JPEG for ${projectImage.repoName}, using placeholder`);
-                                        // Use placeholder if all custom images fail
-                                        e3.target.onerror = null;
-                                        e3.target.src = projectImage.fallbackUrl;
-                                      };
-                                      e2.target.src = projectImage.jpegUrl;
-                                    };
-                                    e.target.src = projectImage.pngUrl;
-                                  }}
-                                />
+                                {projectImage.imagePath ? (
+                                  <Image
+                                    src={projectImage.imagePath}
+                                    alt={`${repo.name} preview`}
+                                    fill
+                                    className="object-cover"
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                  />
+                                ) : (
+                                  <Image
+                                    src={projectImage.fallbackUrl}
+                                    alt={`${repo.name} preview`}
+                                    fill
+                                    className="object-cover"
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                  />
+                                )}
                               </div>
                               
                               {/* Project Info */}
