@@ -15,7 +15,7 @@ export async function GET() {
         // Add authorization if you need to access private repos
         // 'Authorization': 'token YOUR_GITHUB_TOKEN'
       },
-      next: { revalidate: 3600 } // Cache for 1 hour
+      cache: 'no-store' // Ensure we don't cache the response
     });
 
     if (!response.ok) {
@@ -37,7 +37,19 @@ export async function GET() {
       "CodeMaster",
       "course-registration-application", 
       "Book-Review-Web", 
-      "Project_ITP"
+      "Project_ITP",
+      "To-Do-List-MERN-Stack",
+      "To-Do-List",
+      "server-monitoring-system",
+      "ERP-System",
+      "Academic-Day-Plan-App",
+      "Android-Studio-SimpleCarGame",
+      "Android-Studio-SimpleFoodApp",
+      "Online-Video-Browsing-System-LoginUI",
+      "Online-Bus-Booking-System",
+      "QR-Generator",
+      "Restaurant-Frontend-Demo",
+      "ui-practice"
     ];
     
     // Map the response to match your expected format
@@ -52,7 +64,7 @@ export async function GET() {
       forks_count: repo.forks_count
     }));
     
-    // Custom sort function: priority repos first, then the rest
+    // Custom sort function: priority repos first, then the rest by update date
     formattedRepos.sort((a, b) => {
       const indexA = priorityOrder.indexOf(a.name);
       const indexB = priorityOrder.indexOf(b.name);
@@ -68,8 +80,10 @@ export async function GET() {
       // If only b is in priority list, it comes first
       if (indexB >= 0) return 1;
       
-      // Otherwise, keep original order from API (most recently updated)
-      return 0;
+      // For non-priority repos, sort by update date (most recent first)
+      const repoA = repos.find(r => r.name === a.name);
+      const repoB = repos.find(r => r.name === b.name);
+      return new Date(repoB.updated_at) - new Date(repoA.updated_at);
     });
     
     return NextResponse.json(formattedRepos);

@@ -84,7 +84,6 @@ export default function About() {
                           <lang.icon size={20} color={lang.color} />
                         </div>
                         <span className="font-medium text-sm">{lang.name}</span>
-                        <span className="ml-auto text-sm">{lang.proficiency}%</span>
                       </div>
                       
                       <div className="w-full bg-gray-700 rounded-full h-2 overflow-hidden">
