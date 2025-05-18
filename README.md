@@ -4,7 +4,7 @@ A modern, responsive portfolio website built with Next.js and Tailwind CSS, show
 
 ## 🌐 Live Demo
 
-Visit my portfolio: [https://my-portfolio-one-wine-22.vercel.app/](https://my-portfolio-oshadha2k01.vercel.app/)
+Visit my portfolio: [Portfolio](https://my-portfolio-one-wine-22.vercel.app/)
 
 ## 🚀 Features
 
