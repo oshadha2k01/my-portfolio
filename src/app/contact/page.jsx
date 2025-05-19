@@ -16,7 +16,47 @@ export default function Contact() {
     phone: '',
     message: ''
   });
+  const [errors, setErrors] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const validateName = (name) => {
+    if (!name.trim()) return 'Name is required';
+    if (name.length < 2) return 'Name must be at least 2 characters';
+    if (!/^[a-zA-Z\s]*$/.test(name)) return 'Name should only contain letters and spaces';
+    return '';
+  };
+
+  const validateEmail = (email) => {
+    if (!email.trim()) return 'Email is required';
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(email)) return 'Please enter a valid email address';
+    return '';
+  };
+
+  const validatePhone = (phone) => {
+    if (!phone) return ''; // Phone is optional
+    if (!/^\+?\d{0,10}$/.test(phone)) {
+      return 'Please enter a valid phone number (only numbers and + allowed)';
+    }
+    if (phone.startsWith('+') && phone.length > 11) {
+      return 'Phone number cannot exceed 10 digits after +';
+    }
+    if (!phone.startsWith('+') && phone.length > 10) {
+      return 'Phone number cannot exceed 10 digits';
+    }
+    return '';
+  };
+
+  const validateMessage = (message) => {
+    if (!message.trim()) return 'Message is required';
+    if (message.length < 10) return 'Message must be at least 10 characters';
+    return '';
+  };
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -24,10 +64,124 @@ export default function Contact() {
       ...prev,
       [id]: value
     }));
+
+    // Validate the field that changed
+    let error = '';
+    switch (id) {
+      case 'name':
+        error = validateName(value);
+        break;
+      case 'email':
+        error = validateEmail(value);
+        break;
+      case 'phone':
+        error = validatePhone(value);
+        break;
+      case 'message':
+        error = validateMessage(value);
+        break;
+      default:
+        break;
+    }
+
+    setErrors(prev => ({
+      ...prev,
+      [id]: error
+    }));
+  };
+
+  const handlePhoneChange = (e) => {
+    const { value } = e.target;
+    // Only allow numbers and + at the start
+    const sanitizedValue = value.replace(/[^\d+]/g, '');
+    
+    // Ensure + is only at the start
+    const finalValue = sanitizedValue.includes('+') 
+      ? '+' + sanitizedValue.replace(/\+/g, '')
+      : sanitizedValue;
+
+    // Limit to 10 digits after + (if present)
+    const maxLength = finalValue.startsWith('+') ? 11 : 10;
+    const truncatedValue = finalValue.slice(0, maxLength);
+
+    setFormData(prev => ({
+      ...prev,
+      phone: truncatedValue
+    }));
+
+    // Validate the new value
+    const error = validatePhone(truncatedValue);
+    setErrors(prev => ({
+      ...prev,
+      phone: error
+    }));
+  };
+
+  const handleNameChange = (e) => {
+    const { value } = e.target;
+    // Only allow letters and spaces
+    const sanitizedValue = value.replace(/[^a-zA-Z\s]/g, '');
+    
+    setFormData(prev => ({
+      ...prev,
+      name: sanitizedValue
+    }));
+
+    // Validate the new value
+    const error = validateName(sanitizedValue);
+    setErrors(prev => ({
+      ...prev,
+      name: error
+    }));
+  };
+
+  const handleEmailChange = (e) => {
+    const { value } = e.target;
+    // Allow letters, numbers, and specific email characters
+    const sanitizedValue = value.replace(/[^a-zA-Z0-9@._%+-]/g, '');
+    
+    // Ensure only one @ symbol
+    const atCount = (sanitizedValue.match(/@/g) || []).length;
+    const finalValue = atCount > 1 
+      ? sanitizedValue.replace(/@/g, (match, index) => index === sanitizedValue.indexOf('@') ? '@' : '')
+      : sanitizedValue;
+    
+    setFormData(prev => ({
+      ...prev,
+      email: finalValue
+    }));
+
+    // Validate the new value
+    const error = validateEmail(finalValue);
+    setErrors(prev => ({
+      ...prev,
+      email: error
+    }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    // Validate all fields before submission
+    const newErrors = {
+      name: validateName(formData.name),
+      email: validateEmail(formData.email),
+      phone: validatePhone(formData.phone),
+      message: validateMessage(formData.message)
+    };
+
+    // If phone is empty, don't show error (since it's optional)
+    if (!formData.phone) {
+      newErrors.phone = '';
+    }
+
+    setErrors(newErrors);
+
+    // Check if there are any errors
+    if (Object.values(newErrors).some(error => error !== '')) {
+      return;
+    }
+
     setIsSubmitting(true);
 
     const serviceId = 'service_t7yhycg';
@@ -56,6 +210,12 @@ export default function Contact() {
         });
 
         setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          message: ''
+        });
+        setErrors({
           name: '',
           email: '',
           phone: '',
@@ -198,11 +358,15 @@ export default function Contact() {
                       id="name" 
                       name="user_name"
                       value={formData.name}
-                      onChange={handleChange}
-                      className="w-full p-3 bg-gray-700 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                      onChange={handleNameChange}
+                      className={`w-full p-3 bg-gray-700 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none ${
+                        errors.name ? 'border-2 border-red-500' : ''
+                      }`}
                       placeholder="Your Name"
-                      required
                     />
+                    {errors.name && (
+                      <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+                    )}
                   </div>
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium mb-1">Email</label>
@@ -211,11 +375,15 @@ export default function Contact() {
                       id="email" 
                       name="user_email"
                       value={formData.email}
-                      onChange={handleChange}
-                      className="w-full p-3 bg-gray-700 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                      onChange={handleEmailChange}
+                      className={`w-full p-3 bg-gray-700 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none ${
+                        errors.email ? 'border-2 border-red-500' : ''
+                      }`}
                       placeholder="your.email@example.com"
-                      required
                     />
+                    {errors.email && (
+                      <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                    )}
                   </div>
                 </div>
                 <div className="mb-4">
@@ -225,10 +393,16 @@ export default function Contact() {
                     id="phone" 
                     name="phone"
                     value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full p-3 bg-gray-700 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                    placeholder="Your Phone Number (optional)"
+                    onChange={handlePhoneChange}
+                    className={`w-full p-3 bg-gray-700 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none ${
+                      errors.phone ? 'border-2 border-red-500' : ''
+                    }`}
+                    placeholder="+1234567890 (optional)"
+                    maxLength={11}
                   />
+                  {errors.phone && (
+                    <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+                  )}
                 </div>
                 <div className="mb-6">
                   <label htmlFor="message" className="block text-sm font-medium mb-1">Message</label>
@@ -238,10 +412,14 @@ export default function Contact() {
                     value={formData.message}
                     onChange={handleChange}
                     rows="5" 
-                    className="w-full p-3 bg-gray-700 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    className={`w-full p-3 bg-gray-700 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none ${
+                      errors.message ? 'border-2 border-red-500' : ''
+                    }`}
                     placeholder="Write your message here..."
-                    required
                   ></textarea>
+                  {errors.message && (
+                    <p className="text-red-500 text-sm mt-1">{errors.message}</p>
+                  )}
                 </div>
                 <div className="text-center">
                   <button 
