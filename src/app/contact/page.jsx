@@ -40,14 +40,14 @@ export default function Contact() {
 
   const validatePhone = (phone) => {
     if (!phone) return ''; // Phone is optional
-    if (!/^\+?\d{0,10}$/.test(phone)) {
+    if (!/^\+?\d{0,11}$/.test(phone)) {
       return 'Please enter a valid phone number (only numbers and + allowed)';
     }
-    if (phone.startsWith('+') && phone.length > 11) {
-      return 'Phone number cannot exceed 10 digits after +';
+    if (phone.startsWith('+') && phone.length > 12) {
+      return 'Phone number cannot exceed 11 digits after +';
     }
-    if (!phone.startsWith('+') && phone.length > 10) {
-      return 'Phone number cannot exceed 10 digits';
+    if (!phone.startsWith('+') && phone.length > 11) {
+      return 'Phone number cannot exceed 11 digits';
     }
     return '';
   };
@@ -100,8 +100,8 @@ export default function Contact() {
       ? '+' + sanitizedValue.replace(/\+/g, '')
       : sanitizedValue;
 
-    // Limit to 10 digits after + (if present)
-    const maxLength = finalValue.startsWith('+') ? 11 : 10;
+    // Limit to 11 digits after + (if present)
+    const maxLength = finalValue.startsWith('+') ? 12 : 11;
     const truncatedValue = finalValue.slice(0, maxLength);
 
     setFormData(prev => ({
@@ -397,8 +397,8 @@ export default function Contact() {
                     className={`w-full p-3 bg-gray-700 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none ${
                       errors.phone ? 'border-2 border-red-500' : ''
                     }`}
-                    placeholder="+1234567890 (optional)"
-                    maxLength={11}
+                    placeholder="+94123456789 (optional)"
+                    maxLength={12}
                   />
                   {errors.phone && (
                     <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
