@@ -493,6 +493,21 @@ export default function Project() {
                                             </svg>
                                             <span>HTML</span>
                                           </div>
+                                          
+                                          <div className="flex items-center">
+                                            <SiPhp className="text-[#777BB4] text-xl mr-2" />
+                                            <span>PHP</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <FaDatabase className="text-[#336791] text-xl mr-2" />
+                                            <span>MySQL</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <svg className="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                                              <path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"/>
+                                            </svg>
+                                            <span>HTML</span>
+                                          </div>
                                           <div className="flex items-center">
                                             <svg className="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
                                               <path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.003-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.414z"/>
@@ -500,10 +515,8 @@ export default function Project() {
                                             <span>CSS</span>
                                           </div>
                                           <div className="flex items-center">
-                                            <svg className="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
-                                              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-1.31 4.917c3.97 0 7.182 3.196 7.182 7.13 0 3.933-3.212 7.13-7.182 7.13-3.97 0-7.182-3.197-7.182-7.13 0-3.934 3.212-7.13 7.182-7.13zm0 2.4c-2.64 0-4.782 2.13-4.782 4.73 0 2.6 2.142 4.73 4.782 4.73 2.64 0 4.782-2.13 4.782-4.73 0-2.6-2.142-4.73-4.782-4.73zm.09 1.44c.18 0 .33.15.33.33v1.44h1.44c.18 0 .33.15.33.33 0 .18-.15.33-.33.33h-1.44v1.44c0 .18-.15.33-.33.33-.18 0-.33-.15-.33-.33v-1.44h-1.44c-.18 0-.33-.15-.33-.33 0-.18.15-.33.33-.33h1.44v-1.44c0-.18.15-.33.33-.33z"/>
-                                            </svg>
-                                            <span>Axios</span>
+                                            <SiJavascript className="text-[#F7DF1E] text-xl mr-2" />
+                                            <span>JavaScript</span>
                                           </div>
                                         </div>
                                       </div>
@@ -582,10 +595,6 @@ export default function Project() {
                                               <path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.003-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.414z"/>
                                             </svg>
                                             <span>CSS</span>
-                                          </div>
-                                          <div className="flex items-center">
-                                            <SiTailwindcss className="text-[#06B6D4] text-xl mr-2" />
-                                            <span>Tailwind CSS</span>
                                           </div>
                                           <div className="flex items-center">
                                             <SiPostman className="text-[#FF6C37] text-xl mr-2" />
