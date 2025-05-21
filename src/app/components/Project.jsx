@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaCheckCircle, FaReact, FaNodeJs, FaDatabase, FaJava, FaServer } from 'react-icons/fa';
-import { SiMongodb, SiExpress, SiTailwindcss, SiBootstrap, SiReactrouter, SiJavascript, SiPostman, SiMaterialdesign, SiThemoviedatabase, SiVite, SiSpring, SiPhp, SiPython, SiKotlin } from 'react-icons/si';
+import { SiMongodb, SiExpress, SiTailwindcss, SiBootstrap, SiReactrouter, SiJavascript, SiPostman, SiMaterialdesign, SiThemoviedatabase, SiVite, SiSpring, SiPhp, SiPython, SiKotlin, SiFigma } from 'react-icons/si';
 
 export default function Project() {
   const [repos, setRepos] = useState([]);
@@ -104,6 +104,12 @@ export default function Project() {
         image: '/images/repos/CodeMaster.png',
         description: "CodeMaster is a social platform for developers to create, share, and engage with code snippets. More than a snippet manager, it's a vibrant community for collaboration, feedback, and growth—like Facebook for coders.",
         displayName: 'Code Master Skill Sharing Web App'
+      },
+      'Interactix' : {
+        image: '/images/repos/Interactix.jpeg',
+        description: "Redesigning the Vijitha Yapa Bookstore website, Sri Lanka's renowned literary retailer, to enhance user experience and better reflect its prestigious reputation.",
+        displayName: 'Figma Design Prototype',
+        homepage: 'https://www.figma.com/proto/sr4R4amCijnjvOcUfrX2RB/Interactix?node-id=137-161&node-type=canvas&t=uCjn7u7biQX25GwF-1&scaling=scale-down-width&content-scaling=fixed&page-id=1%3A2&starting-point-node-id=137%3A161'
       },
       'course-registration-application': {
         image: '/images/repos/course-registration-application.png',
@@ -282,26 +288,40 @@ export default function Project() {
                                 <div className="flex justify-between items-center mb-2 sm:mb-3">
                                   <h4 className="text-xl sm:text-2xl font-semibold text-white">{projectImage.repoName}</h4>
                                   <div className="flex items-center gap-2">
-                                    <a
-                                      href={repo.html_url}
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                      className="text-sm sm:text-base text-blue-400 hover:text-blue-300 transition flex items-center"
-                                    >
-                                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                                      </svg>
-                                      GitHub
-                                    </a>
-                                    {projectImage.homepage && (
+                                    {repo.name === 'Interactix' ? (
                                       <a
                                         href={projectImage.homepage}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="text-sm sm:text-base bg-blue-500 hover:bg-blue-600 transition px-3 py-1.5 sm:px-4 sm:py-2 rounded-md text-white"
+                                        className="text-sm sm:text-base text-blue-400 hover:text-blue-300 transition flex items-center"
                                       >
-                                        Live Demo
+                                        <SiFigma className="h-4 w-4 sm:h-5 sm:w-5 mr-1" />
+                                        Figma
                                       </a>
+                                    ) : (
+                                      <>
+                                        <a
+                                          href={repo.html_url}
+                                          target="_blank"
+                                          rel="noopener noreferrer"
+                                          className="text-sm sm:text-base text-blue-400 hover:text-blue-300 transition flex items-center"
+                                        >
+                                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                          </svg>
+                                          GitHub
+                                        </a>
+                                        {projectImage.homepage && (
+                                          <a
+                                            href={projectImage.homepage}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-sm sm:text-base bg-blue-500 hover:bg-blue-600 transition px-3 py-1.5 sm:px-4 sm:py-2 rounded-md text-white"
+                                          >
+                                            Live Demo
+                                          </a>
+                                        )}
+                                      </>
                                     )}
                                   </div>
                                 </div>
@@ -483,19 +503,7 @@ export default function Project() {
                                             <svg className="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
                                               <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-1.31 4.917c3.97 0 7.182 3.196 7.182 7.13 0 3.933-3.212 7.13-7.182 7.13-3.97 0-7.182-3.197-7.182-7.13 0-3.934 3.212-7.13 7.182-7.13zm0 2.4c-2.64 0-4.782 2.13-4.782 4.73 0 2.6 2.142 4.73 4.782 4.73 2.64 0 4.782-2.13 4.782-4.73 0-2.6-2.142-4.73-4.782-4.73zm.09 1.44c.18 0 .33.15.33.33v1.44h1.44c.18 0 .33.15.33.33 0 .18-.15.33-.33.33h-1.44v1.44c0 .18-.15.33-.33.33-.18 0-.33-.15-.33-.33v-1.44h-1.44c-.18 0-.33-.15-.33-.33 0-.18.15-.33.33-.33h1.44v-1.44c0-.18.15-.33.33-.33z"/>
                                             </svg>
-                                            <span>Python</span>
-                                          </div>
-                                          <div className="flex items-center">
-                                            <FaDatabase className="text-[#336791] text-xl mr-2" />
-                                            <span>MySQL</span>
-                                          </div>
-                                          <div className="flex items-center">
-                                            <SiBootstrap className="text-[#7952B3] text-xl mr-2" />
-                                            <span>Bootstrap</span>
-                                          </div>
-                                          <div className="flex items-center">
-                                            <SiPhp className="text-[#777BB4] text-xl mr-2" />
-                                            <span>PHP</span>
+                                            <span>Axios</span>
                                           </div>
                                         </div>
                                       </div>
@@ -918,6 +926,48 @@ export default function Project() {
                                               <path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.003-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.414z"/>
                                             </svg>
                                             <span>CSS</span>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </>
+                                  ) : repo.name === 'Interactix' ? (
+                                    <>
+                                      <p>Redesigning the Vijitha Yapa Bookstore website, Sri Lanka's renowned literary retailer, to enhance user experience and better reflect its prestigious reputation.</p>
+                                      
+                                      <div className="mt-2">
+                                        <strong>Tech Stack:</strong>
+                                        <div className="grid grid-cols-2 gap-2 mt-2">
+                                          <div className="flex items-center">
+                                            <SiFigma className="text-[#F24E1E] text-xl mr-2" />
+                                            <span>Figma</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <SiMaterialdesign className="text-[#757575] text-xl mr-2" />
+                                            <span>Material Design</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <svg className="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                                              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2z"/>
+                                            </svg>
+                                            <span>UI/UX Design</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <svg className="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                                              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2z"/>
+                                            </svg>
+                                            <span>Prototyping</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <svg className="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                                              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2z"/>
+                                            </svg>
+                                            <span>Wireframing</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <svg className="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                                              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2z"/>
+                                            </svg>
+                                            <span>User Research</span>
                                           </div>
                                         </div>
                                       </div>

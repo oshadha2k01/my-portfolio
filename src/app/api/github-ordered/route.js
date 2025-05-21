@@ -102,6 +102,7 @@ export async function GET() {
       "movie-explorer",
       "WanderVibe", 
       "CodeMaster",
+      "Interactix",
       "course-registration-application", 
       "Book-Review-Web", 
       "Project_ITP",
