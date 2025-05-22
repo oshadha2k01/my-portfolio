@@ -15,7 +15,7 @@ export default function NavBar() {
     <header className="fixed top-0 left-0 right-0 z-50 py-5 px-10 bg-gray-800 shadow-md">
       <div className="w-full mx-auto flex justify-between items-center">
         <h1 className="text-3xl font-bold"></h1>
-        <nav className="flex space-x-10">
+        <nav className="flex space-x-8">
           <Link href="/" prefetch={true} className={`text-md ${isActive('/')}`}>Home</Link>
           <Link href="/about" prefetch={true} className={`text-md ${isActive('/about')}`}>About</Link>
           <Link href="/education" prefetch={true} className={`text-md ${isActive('/education')}`}>Education</Link>

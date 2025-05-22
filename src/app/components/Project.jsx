@@ -150,7 +150,7 @@ export default function Project() {
       'Academic-Day-Plan-App' : {
         image: '/images/repos/Academic-Day-Plan-App.png',
         description: 'The app, built with Kotlin and SQLite, helps plan academic activities by managing study plans through full CRUD operations.',
-        displayName: 'Acedmic Mangement App',
+        displayName: 'Academic Mangement App',
       },
       'Android-Studio-SimpleCarGame' : {
        image: '/images/repos/Android-Studio-SimpleCarGame.png',
