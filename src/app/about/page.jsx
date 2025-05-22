@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
+import Education from '../components/Education';
 // Import programming language icons
 import { 
   SiJavascript, SiReact, SiNodedotjs, SiHtml5, SiCss3, SiMongodb,
@@ -48,12 +49,11 @@ export default function About() {
             >
               <h2 className="text-2xl font-semibold mb-4">Who I Am</h2>
               <p className="text-lg mb-6">
-                I'm a motivated Information Technology undergraduate with a solid foundation in software development
-                and a passion for creating efficient, user-friendly solutions. Currently pursuing a BSc (Hons) in 
-                Information Technology at Sri Lanka Institute of Information Technology, I specialize in full-stack 
-                web development with proficiency in modern programming languages, frameworks, and tools.
+                I'm a passionate software developer with a strong foundation in creating efficient, user-friendly solutions. 
+                My focus is on full-stack web development, where I combine technical expertise with creative problem-solving 
+                to build impactful applications.
               </p>
-              <p className="text-lg">
+              <p className="text-lg mb-6">
                 I'm dedicated to writing clean, maintainable code and solving real-world challenges through innovative 
                 approaches. My experience as a Full Stack Developer Intern at Difynbest Solution has equipped me with 
                 practical skills in the MERN stack and collaborative development practices.
