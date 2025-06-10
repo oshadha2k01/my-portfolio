@@ -943,6 +943,39 @@ export default function Project() {
                                         </div>
                                       </div>
                                     </>
+
+                                    ) : repo.name === 'backend-task' ? (
+  <>
+    <p>A simple backend task management system.</p>
+
+    <div className="mt-2">
+      <strong>Tech Stack:</strong>
+      <div className="grid grid-cols-2 gap-2 mt-2">
+        <div className="flex items-center">
+          <FaNodeJs className="text-green-600 text-xl mr-2" />
+          <span>Node.js</span>
+        </div>
+        <div className="flex items-center">
+          <SiExpress className="text-gray-800 text-xl mr-2" />
+          <span>Express.js</span>
+        </div>
+        <div className="flex items-center">
+          <SiMongodb className="text-green-700 text-xl mr-2" />
+          <span>MongoDB</span>
+        </div>
+        <div className="flex items-center">
+          <TbApi className="text-blue-500 text-xl mr-2" />
+          <span>REST API</span>
+        </div>
+        <div className="flex items-center">
+          <SiPostman className="text-orange-500 text-xl mr-2" />
+          <span>Postman</span>
+        </div>
+      </div>
+    </div>
+  </>
+
+
                                   ) : repo.name === 'react-app' ? (
                                     <>
                                       <p>A simple React application that show the products</p>
