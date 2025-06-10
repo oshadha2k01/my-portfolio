@@ -63,6 +63,14 @@ export default function Home() {
               repeat={Infinity}
               className="text-2xl sm:text-3xl mb-6 text-gray-100"
             />
+            {/* Get My CV Button */}
+            <a
+              href="/CV_Oshadha_Pathiraja.pdf"
+              download
+              className="inline-block mt-2 px-6 py-3 bg-gray-800 text-white font-semibold rounded-lg shadow transition hover:bg-gray-700"
+            >
+              Get My CV
+            </a>
           </div>
         </div>
       </section>
