@@ -131,11 +131,15 @@ export default function Project() {
         description: 'A fully responsive To-Do List application built using the MERN (MongoDB, Express, React, Node.js) stack. This application enables users to manage their tasks effectively with features like adding, editing, deleting, and marking tasks as complete/incomplete.',
         displayName: 'To-Do List Web App'
       },
-      'To-Do-List': {
-        image: '/images/repos/To-Do-List.png',
-        description: 'A simple and responsive To-Do List app built with HTML, CSS, and JavaScript. This project demonstrates basic front-end development skills and provides optional task persistence using local storage.',
-        displayName: 'Simple To-Do-List App',
-        homepage: 'https://to-do-list-eight-coral-95.vercel.app/'
+      'react-app' :{
+        image: '/images/repos/react-app.png',
+        description: 'A simple React application that show the products',
+        displayName: 'Product Store',
+      },
+      'backend-task':{
+        image: '/images/repos/backend-task.png',
+        description: 'A simple backend task management system built with Node.js and Express, allowing users to create, read, update, and delete products.',
+        displayName: 'Backend App',
       },
       'server-monitoring-system': {
         image: '/images/repos/server-monitoring-system.png',
@@ -906,7 +910,7 @@ export default function Project() {
                                           </div>
                                           <div className="flex items-center">
                                             <svg className="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
-                                              <path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.003-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.414z"/>
+                                              <path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.003-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.414z"/>
                                             </svg>
                                             <span>CSS</span>
                                           </div>
@@ -932,51 +936,27 @@ export default function Project() {
                                           </div>
                                           <div className="flex items-center">
                                             <svg className="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
-                                              <path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.003-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.414z"/>
+                                              <path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.003-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.414z"/>
                                             </svg>
                                             <span>CSS</span>
                                           </div>
                                         </div>
                                       </div>
                                     </>
-                                  ) : repo.name === 'Interactix' ? (
+                                  ) : repo.name === 'react-app' ? (
                                     <>
-                                      <p>Redesigning the Vijitha Yapa Bookstore website, Sri Lanka's renowned literary retailer, to enhance user experience and better reflect its prestigious reputation.</p>
+                                      <p>A simple React application that show the products</p>
                                       
                                       <div className="mt-2">
                                         <strong>Tech Stack:</strong>
                                         <div className="grid grid-cols-2 gap-2 mt-2">
                                           <div className="flex items-center">
-                                            <SiFigma className="text-[#F24E1E] text-xl mr-2" />
-                                            <span>Figma</span>
+                                            <FaReact className="text-[#61DAFB] text-xl mr-2" />
+                                            <span>React.js</span>
                                           </div>
                                           <div className="flex items-center">
-                                            <SiMaterialdesign className="text-[#757575] text-xl mr-2" />
-                                            <span>Material Design</span>
-                                          </div>
-                                          <div className="flex items-center">
-                                            <svg className="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
-                                              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2z"/>
-                                            </svg>
-                                            <span>UI/UX Design</span>
-                                          </div>
-                                          <div className="flex items-center">
-                                            <svg className="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
-                                              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2z"/>
-                                            </svg>
-                                            <span>Prototyping</span>
-                                          </div>
-                                          <div className="flex items-center">
-                                            <svg className="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
-                                              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2z"/>
-                                            </svg>
-                                            <span>Wireframing</span>
-                                          </div>
-                                          <div className="flex items-center">
-                                            <svg className="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
-                                              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2z"/>
-                                            </svg>
-                                            <span>User Research</span>
+                                            <SiBootstrap className="text-[#7952B3] text-xl mr-2" />
+                                            <span>Bootstrap 5</span>
                                           </div>
                                         </div>
                                       </div>
