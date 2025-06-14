@@ -56,7 +56,9 @@ export default function Home() {
               sequence={[
                 'Full Stack Developer',
                 2000,
-                'Web Developer',
+                'Software Engineer',
+                2000,
+                 'Web Developer',
                 2000,
               ]}
               wrapper="p"
