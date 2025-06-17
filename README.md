@@ -99,9 +99,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👨‍💻 Author
 
-- **Oshadha Perera**
+- **Oshadha Pathiraja**
 - GitHub: [@oshadha2k01](https://github.com/oshadha2k01)
-- LinkedIn: [Oshadha Perera](https://www.linkedin.com/in/oshadha-perera/)
+- LinkedIn: [Oshadha Pathiraja](https://www.linkedin.com/in/oshadha-pathiraja-77b08333a/)
 
 ## 🙏 Acknowledgments
 
