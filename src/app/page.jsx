@@ -24,7 +24,7 @@ export default function Home() {
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
              <Image 
-              src="/images/profile.jpg" 
+              src="/images/profile_v2.jpg" 
               width={288} 
               height={288} 
               alt="Profile Photo"
