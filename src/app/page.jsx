@@ -69,7 +69,7 @@ export default function Home() {
             <a
               href="/CV_Oshadha_Pathiraja.pdf"
               download
-              className="inline-block mt-2 px-6 py-3 bg-blue-950 text-white font-semibold rounded-lg shadow transition hover:bg-purple-900"
+              className="inline-block mt-2 px-6 py-3 bg-gradient-to-r from-blue-950 via-purple-900 to-purple-800 text-white font-semibold rounded-lg shadow transition hover:from-purple-900 hover:to-blue-950"
             >
               Donwload My CV
             </a>
