@@ -14,11 +14,11 @@ export default function Home() {
       <NavBar />
 
       {/* Profile Section - Enhanced with better centering and larger elements */}
-      <section className="py-0 bg-gradient-to-r from-blue-600 to-purple-600 flex-grow flex items-center justify-center">
+      <section className="py-0 bg-gradient-to-r from-gray-900 via-blue-950 to-purple-900 flex-grow flex items-center justify-center">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-12 px-6">
           {/* Larger Profile Photo - maintaining circular shape */}
           <motion.div 
-            className="w-64 h-64 sm:w-72 sm:h-72 rounded-full overflow-hidden border-4 border-white shadow-xl flex items-center justify-center bg-gray-800"
+            className="w-64 h-64 sm:w-72 sm:h-72 rounded-full overflow-hidden shadow-2xl border-4 border-blue-950 flex items-center justify-center bg-gray-900"
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
@@ -69,9 +69,9 @@ export default function Home() {
             <a
               href="/CV_Oshadha_Pathiraja.pdf"
               download
-              className="inline-block mt-2 px-6 py-3 bg-gray-800 text-white font-semibold rounded-lg shadow transition hover:bg-gray-700"
+              className="inline-block mt-2 px-6 py-3 bg-blue-950 text-white font-semibold rounded-lg shadow transition hover:bg-purple-900"
             >
-              Get My CV
+              Donwload My CV
             </a>
           </div>
         </div>
