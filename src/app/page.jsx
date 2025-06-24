@@ -23,7 +23,7 @@ export default function Home() {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
-            {/* <Image 
+             <Image 
               src="/images/profile.jpg" 
               width={288} 
               height={288} 
@@ -33,7 +33,7 @@ export default function Home() {
               onError={(e) => {
                 e.target.src = "https://via.placeholder.com/288?text=Profile"
               }}
-            /> */}
+            /> 
           </motion.div>
           
           {/* Profile Info with enhanced typography */}
