@@ -660,36 +660,7 @@ export default function Project() {
                                         </div>
                                       </div>
                                     </>
-                                  ) : repo.name === 'To-Do-List' ? (
-                                    <>
-                                      <p>A simple and responsive To-Do List app built with HTML, CSS, and JavaScript. This project demonstrates basic front-end development skills and provides optional task persistence using local storage.</p>
-                                      
-                                      <div className="mt-2">
-                                        <strong>Tech Stack:</strong>
-                                        <div className="grid grid-cols-2 gap-2 mt-2">
-                                          <div className="flex items-center">
-                                            <svg className="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
-                                              <path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"/>
-                                            </svg>
-                                            <span>HTML</span>
-                                          </div>
-                                          <div className="flex items-center">
-                                            <svg className="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
-                                              <path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.003-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.414z"/>
-                                            </svg>
-                                            <span>CSS</span>
-                                          </div>
-                                          <div className="flex items-center">
-                                            <SiJavascript className="text-[#F7DF1E] text-xl mr-2" />
-                                            <span>JavaScript</span>
-                                          </div>
-                                          <div className="flex items-center">
-                                            <FaDatabase className="text-[#336791] text-xl mr-2" />
-                                            <span>Local Storage</span>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </>
+                                 
                                   ) : repo.name === 'server-monitoring-system' ? (
                                     <>
                                       <p>This project implements a simple monitoring system to track server performance metrics such as CPU usage, memory usage, and disk space. It triggers email alerts when usage exceeds predefined thresholds and logs metrics for analysis.</p>
@@ -714,6 +685,43 @@ export default function Project() {
                                               <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                                             </svg>
                                             <span>Email Alerts</span>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </>
+                                    ) : repo.name === 'Task-Project' ? (
+                                    <>
+                                      <p>This project implements a simple task management system to track tasks and their statuses. It allows users to create, update, and delete tasks, as well as set deadlines and priorities.</p>
+                                      <div className="mt-2">
+                                        <strong>Tech Stack:</strong>
+                                        <div className="grid grid-cols-2 gap-2 mt-2">
+                                          <div className="flex items-center">
+                                            <FaReact className="text-[#61DAFB] text-xl mr-2" />
+                                            <span>React.js</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <FaNodeJs className="text-[#339933] text-xl mr-2" />
+                                            <span>Node.js</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <SiExpress className="text-white text-xl mr-2" />
+                                            <span>Express.js</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <SiMongodb className="text-[#47A248] text-xl mr-2" />
+                                            <span>MongoDB</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <SiMongodb className="text-[#47A248] text-xl mr-2" />
+                                            <span>Mongoose</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <SiTailwindcss className="text-[#06B6D4] text-xl mr-2" />
+                                            <span>Tailwind CSS</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <SiPostman className="text-[#FF6C37] text-xl mr-2" />
+                                            <span>Postman</span>
                                           </div>
                                         </div>
                                       </div>
