@@ -146,6 +146,11 @@ export default function Project() {
         description: 'This project implements a simple monitoring system to track server performance metrics such as CPU usage, memory usage, and disk space. It triggers email alerts when usage exceeds predefined thresholds and logs metrics for analysis.',
         displayName: 'Monitoring System',
       },
+      'Task-Project' : {
+        image: '/images/repos/Task-Project.png',
+        description: 'This project implements a simple task management system to track tasks and their statuses. It allows users to create, update, and delete tasks, as well as set deadlines and priorities.',
+        displayName: 'Task Management System',
+      },
       'ERP-System' : {
        image: '/images/repos/ERP-System.png',
         description: 'This ERP system is a web application built with PHP and MySQL to manage business operations. It includes features for customer management, inventory control, and reporting, showcasing CRUD operations and report generation.',

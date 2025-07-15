@@ -110,6 +110,7 @@ export async function GET() {
       "react-app",
       "backend-task",
       "server-monitoring-system",
+      "Task-Project",
       "ERP-System",
       "Academic-Day-Plan-App",
       "Android-Studio-SimpleCarGame",
