@@ -116,20 +116,10 @@ export default function Project() {
         description: 'This project is a web-based student registration application that allows students to register, provide their details, and enroll in multiple study courses',
         displayName: 'Course Registration Application'
       },
-      'Book-Review-Web': {
-        image: '/images/repos/Book-Review-Web.png',
-        description: 'This Book Review Application allows users to view, add, edit, and delete book reviews. Each review includes the book title, author, rating (in stars), and a detailed review text. The reviews are stored in a backend database and are displayed dynamically on the frontend.',
-        displayName: 'Book Review Web'
-      },
       'Project_ITP': {
         image: '/images/repos/Project_ITP.png',
         description: 'The Tourism Management System in Sri Lanka enhances the travel experience for local and foreign tourists by providing a centralized platform for accessing travel information. It helps streamline trip planning with details on attractions, transport, accommodations, and events. The system promotes safe, convenient, and sustainable tourism across the island.',
         displayName: 'Tourism Management System'
-      },
-      'To-Do-List-MERN-Stack': {
-        image: '/images/repos/To-Do-List-MERN-Stack.png',
-        description: 'A fully responsive To-Do List application built using the MERN (MongoDB, Express, React, Node.js) stack. This application enables users to manage their tasks effectively with features like adding, editing, deleting, and marking tasks as complete/incomplete.',
-        displayName: 'To-Do List Web App'
       },
       'react-app' :{
         image: '/images/repos/react-app.png',
@@ -530,48 +520,6 @@ export default function Project() {
                                         </div>
                                       </div>
                                     </>
-                                  ) : repo.name === 'Book-Review-Web' ? (
-                                    <>
-                                      <p>This Book Review Application allows users to view, add, edit, and delete book reviews. Each review includes the book title, author, rating (in stars), and a detailed review text. The reviews are stored in a backend database and are displayed dynamically on the frontend.</p>
-                                      
-                                      <div className="mt-2">
-                                        <strong>Tech Stack:</strong>
-                                        <div className="grid grid-cols-2 gap-2 mt-2">
-                                          <div className="flex items-center">
-                                            <FaReact className="text-[#61DAFB] text-xl mr-2" />
-                                            <span>React.js</span>
-                                          </div>
-                                          <div className="flex items-center">
-                                            <SiTailwindcss className="text-[#06B6D4] text-xl mr-2" />
-                                            <span>Tailwind CSS</span>
-                                          </div>
-                                          <div className="flex items-center">
-                                            <SiBootstrap className="text-[#7952B3] text-xl mr-2" />
-                                            <span>Bootstrap</span>
-                                          </div>
-                                          <div className="flex items-center">
-                                            <FaNodeJs className="text-[#339933] text-xl mr-2" />
-                                            <span>Node.js</span>
-                                          </div>
-                                          <div className="flex items-center">
-                                            <SiExpress className="text-white text-xl mr-2" />
-                                            <span>Express.js</span>
-                                          </div>
-                                          <div className="flex items-center">
-                                            <SiMongodb className="text-[#47A248] text-xl mr-2" />
-                                            <span>MongoDB</span>
-                                          </div>
-                                          <div className="flex items-center">
-                                            <FaServer className="text-[#FF6C37] text-xl mr-2" />
-                                            <span>REST API</span>
-                                          </div>
-                                          <div className="flex items-center">
-                                            <SiJavascript className="text-[#F7DF1E] text-xl mr-2" />
-                                            <span>JavaScript</span>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </>
                                   ) : repo.name === 'Project_ITP' ? (
                                     <>
                                       <p>The Tourism Management System in Sri Lanka enhances the travel experience for local and foreign tourists by providing a centralized platform for accessing travel information. It helps streamline trip planning with details on attractions, transport, accommodations, and events. The system promotes safe, convenient, and sustainable tourism across the island.</p>
@@ -620,47 +568,6 @@ export default function Project() {
                                         </div>
                                       </div>
                                     </>
-                                  ) : repo.name === 'To-Do-List-MERN-Stack' ? (
-                                    <>
-                                      <p>A fully responsive To-Do List application built using the MERN (MongoDB, Express, React, Node.js) stack. This application enables users to manage their tasks effectively with features like adding, editing, deleting, and marking tasks as complete/incomplete.</p>
-                                      
-                                      <div className="mt-2">
-                                        <strong>Tech Stack:</strong>
-                                        <div className="grid grid-cols-2 gap-2 mt-2">
-                                          <div className="flex items-center">
-                                            <FaReact className="text-[#61DAFB] text-xl mr-2" />
-                                            <span>React.js</span>
-                                          </div>
-                                          <div className="flex items-center">
-                                            <FaNodeJs className="text-[#339933] text-xl mr-2" />
-                                            <span>Node.js</span>
-                                          </div>
-                                          <div className="flex items-center">
-                                            <SiExpress className="text-white text-xl mr-2" />
-                                            <span>Express.js</span>
-                                          </div>
-                                          <div className="flex items-center">
-                                            <SiMongodb className="text-[#47A248] text-xl mr-2" />
-                                            <span>MongoDB</span>
-                                          </div>
-                                          <div className="flex items-center">
-                                            <SiMongodb className="text-[#47A248] text-xl mr-2" />
-                                            <span>Mongoose</span>
-                                          </div>
-                                          <div className="flex items-center">
-                                            <SiTailwindcss className="text-[#06B6D4] text-xl mr-2" />
-                                            <span>Tailwind CSS</span>
-                                          </div>
-                                          <div className="flex items-center">
-                                            <svg className="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
-                                              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-1.31 4.917c3.97 0 7.182 3.196 7.182 7.13 0 3.933-3.212 7.13-7.182 7.13-3.97 0-7.182-3.197-7.182-7.13 0-3.934 3.212-7.13 7.182-7.13zm0 2.4c-2.64 0-4.782 2.13-4.782 4.73 0 2.6 2.142 4.73 4.782 4.73 2.64 0 4.782-2.13 4.782-4.73 0-2.6-2.142-4.73-4.782-4.73zm.09 1.44c.18 0 .33.15.33.33v1.44h1.44c.18 0 .33.15.33.33 0 .18-.15.33-.33.33h-1.44v1.44c0 .18-.15.33-.33.33-.18 0-.33-.15-.33-.33v-1.44h-1.44c-.18 0-.33-.15-.33-.33 0-.18.15-.33.33-.33h1.44v-1.44c0-.18.15-.33.33-.33z"/>
-                                            </svg>
-                                            <span>Axios</span>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </>
-                                 
                                   ) : repo.name === 'server-monitoring-system' ? (
                                     <>
                                       <p>This project implements a simple monitoring system to track server performance metrics such as CPU usage, memory usage, and disk space. It triggers email alerts when usage exceeds predefined thresholds and logs metrics for analysis.</p>
