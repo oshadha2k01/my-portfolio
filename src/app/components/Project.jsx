@@ -28,6 +28,7 @@ import {
   SiPython,
   SiKotlin,
   SiFigma,
+  SiJsonwebtokens ,
 } from "react-icons/si";
 
 export default function Project() {
