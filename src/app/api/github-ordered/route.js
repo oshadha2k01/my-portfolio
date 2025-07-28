@@ -109,6 +109,8 @@ export async function GET() {
       "backend-task",
       "server-monitoring-system",
       "Task-Project",
+      "Issue-Tracker",
+      "React-Node",
       "ERP-System",
       "Academic-Day-Plan-App",
       "Android-Studio-SimpleCarGame",
