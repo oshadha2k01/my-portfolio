@@ -24,7 +24,7 @@ export default function Home() {
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
              <Image 
-              src="/images/profile_photo.jpg" 
+              src="/images/profile_photo.png" 
               width={288} 
               height={288} 
               alt="Profile Photo"
@@ -54,11 +54,9 @@ export default function Home() {
             {/* Position with Type Animation - larger font */}
             <TypeAnimation
               sequence={[
-                'Full Stack Developer',
+                'Associate Full Stack Developer',
                 2000,
-                'Software Engineer',
-                2000,
-                 'Web Developer',
+                'Associate Software Engineer',
                 2000,
               ]}
               wrapper="p"

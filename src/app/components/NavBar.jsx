@@ -19,6 +19,7 @@ export default function NavBar() {
           <Link href="/" prefetch={true} className={`text-md ${isActive('/')}`}>Home</Link>
           <Link href="/about" prefetch={true} className={`text-md ${isActive('/about')}`}>About</Link>
           <Link href="/education" prefetch={true} className={`text-md ${isActive('/education')}`}>Education</Link>
+          <Link href="/experience" prefetch={true} className={`text-md ${isActive('/experience')}`}>Experience</Link>
           <Link href="/projects" prefetch={true} className={`text-md ${isActive('/projects')}`}>Projects</Link>
           <Link href="/contact" prefetch={true} className={`text-md ${isActive('/contact')}`}>Contact</Link>
         </nav>

@@ -1,0 +1,32 @@
+"use client"
+
+import { motion } from 'framer-motion';
+import NavBar from '../components/NavBar';
+import Footer from '../components/Footer';
+import Experience from '../components/Experience';
+
+export default function ExperiencePage() {
+  return (
+    <div className="min-h-screen bg-gray-900 text-white pt-16 flex flex-col">
+      <NavBar />
+      
+
+      <section className="py-10">
+        
+        <div className="max-w-4xl mx-auto px-4">
+          <motion.div 
+            className="bg-gray-800 rounded-xl p-8 shadow-lg"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            
+            <Experience />
+          </motion.div>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  );
+} 

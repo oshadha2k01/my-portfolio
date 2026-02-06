@@ -7,7 +7,7 @@ import Education from '../components/Education';
 // Import programming language icons
 import { 
   SiJavascript, SiReact, SiNodedotjs, SiHtml5, SiCss3, SiMongodb,
-  SiMysql, SiTailwindcss, SiC, SiCplusplus, SiPhp, SiBootstrap, SiFigma
+  SiMysql, SiTailwindcss, SiC, SiCplusplus, SiPhp, SiBootstrap, SiFigma, SiTypescript, SiNextdotjs
 } from "react-icons/si";
 import { FaJava } from "react-icons/fa";
 
@@ -15,7 +15,9 @@ export default function About() {
   // Define programming languages with skill levels
   const programmingLanguages = [
     { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E", proficiency: 90 },
+    { name: "TypeScript", icon: SiTypescript, color: "#3178C6", proficiency: 60 },
     { name: "React", icon: SiReact, color: "#61DAFB", proficiency: 90 },
+    { name: "Next.js", icon: SiNextdotjs, color: "#000000", proficiency: 40 },
     { name: "Node.js", icon: SiNodedotjs, color: "#339933", proficiency: 88 },
     { name: "HTML5", icon: SiHtml5, color: "#E34F26", proficiency: 98 },
     { name: "CSS3", icon: SiCss3, color: "#1572B6", proficiency: 98 },
@@ -24,10 +26,8 @@ export default function About() {
     { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4", proficiency: 85 },
     { name: "Bootstrap", icon: SiBootstrap, color: "#7952B3", proficiency: 90 },
     { name: "Figma", icon: SiFigma, color: "#F24E1E", proficiency: 80 },
-    { name: "C", icon: SiC, color: "#A8B9CC", proficiency: 60 },
-    { name: "C++", icon: SiCplusplus, color: "#00599C", proficiency: 50 },
     { name: "PHP", icon: SiPhp, color: "#777BB4", proficiency: 80 },
-    { name: "Java", icon: FaJava, color: "#007396", proficiency: 70 },
+    { name: "Java", icon: FaJava, color: "#007396", proficiency: 50 },
   ];
   
   return (
@@ -49,14 +49,9 @@ export default function About() {
             >
               <h2 className="text-2xl font-semibold mb-4">Who I Am</h2>
               <p className="text-lg mb-6">
-                I'm a passionate software developer with a strong foundation in creating efficient, user-friendly solutions. 
-                My focus is on full-stack web development, where I combine technical expertise with creative problem-solving 
-                to build impactful applications.
-              </p>
-              <p className="text-lg mb-6">
-                I'm dedicated to writing clean, maintainable code and solving real-world challenges through innovative 
-                approaches. My experience as a Full Stack Developer Intern at Difynbest Solution has equipped me with 
-                practical skills in the MERN stack and collaborative development practices.
+                I am an enthusiastic and motivated IT undergraduate with strong skills in software
+                development and full-stack web technologies. Passionate about building user-friendly
+                applications, writing clean code, and growing as an Associate Software Engineer.
               </p>
             </motion.div>
 

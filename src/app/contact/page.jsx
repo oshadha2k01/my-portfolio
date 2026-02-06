@@ -252,7 +252,7 @@ export default function Contact() {
                 {/* Profile Image */}
                 <div className="w-48 h-48 rounded-full overflow-hidden bg-gray-700 flex items-center justify-center shadow-xl border-4 border-blue-400 hover:border-blue-500 transition-all duration-300 transform hover:scale-105 mb-8">
                   <Image 
-                    src="/images/profile_photo.jpg"
+                    src="/images/profile_photo.png"
                     width={224}
                     height={224}
                     alt="Oshadha Pathiraja"
