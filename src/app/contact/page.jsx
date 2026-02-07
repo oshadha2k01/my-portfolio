@@ -306,7 +306,7 @@ export default function Contact() {
                       <FaGithub />
                     </a>
                     <a 
-                      href="https://www.linkedin.com/in/oshadha-nipun-77b08333a/" 
+                      href="https://www.linkedin.com/in/oshadha-pathiraja-77b08333a/" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="text-3xl text-gray-300 hover:text-blue-400 transition"
