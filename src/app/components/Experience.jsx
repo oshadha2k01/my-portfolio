@@ -14,7 +14,7 @@ export default function Experience() {
     },
     {
       role: 'Software Engineer Intern',
-      company: 'Difynbest Solution PVT LTD',
+      company: 'Difynbest Solution PVT LTD Colombo',
       location: 'Remote / Colombo, Sri Lanka', // Not specified in text, leaving generic or omitting
       period: 'August 2024 – May 2025',
       description: 'Developed responsive front-end interfaces using React.js and Tailwind CSS, and implemented secure user authentication using JWT and other security measures.',
