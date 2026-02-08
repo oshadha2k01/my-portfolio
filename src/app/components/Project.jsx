@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import Loading from "../loading";
 import {
   FaCheckCircle,
   FaReact,
@@ -275,7 +276,7 @@ export default function Project() {
           My Projects
         </h2>
         {loading ? (
-          <p className="text-center">Loading projects...</p>
+          <Loading />
         ) : error ? (
           <p className="text-center text-red-500">{error}</p>
         ) : repos.length === 0 ? (
