@@ -65,11 +65,11 @@ export default function Home() {
             />
             {/* Get My CV Button */}
             <a
-              href="/CV_Oshadha_Pathiraja.pdf"
+              href="/CV_Oshadha_Pathiraja.pdf?v=1"
               download
               className="inline-block mt-2 px-6 py-3 bg-gradient-to-r from-blue-950 via-purple-900 to-purple-800 text-white font-semibold rounded-lg shadow transition hover:from-purple-900 hover:to-blue-950"
             >
-              Donwload My CV
+              Download My CV
             </a>
           </div>
         </div>
