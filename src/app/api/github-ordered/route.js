@@ -106,6 +106,7 @@ export async function GET() {
       "course-registration-application",  
       "Project_ITP",
       "ShoporaShoppingHub",
+      "SmartTasker",
       "server-monitoring-system",
       "DailyTrackerWeb",
       "Issue-Tracker",
