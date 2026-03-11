@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
-// Add this line to make it work with static export
-export const dynamic = 'force-dynamic';
+const CACHE_DURATION = 900;
+export const revalidate = 900;
 
 export async function GET() {
   try {
@@ -14,7 +14,7 @@ export async function GET() {
     if (!githubToken) {
       console.error('GitHub token is not set in environment variables');
       return NextResponse.json(
-        { error: 'GitHub token is not configured. Please add GITHUB_TOKEN to your environment variables.' },
+        { error: 'Project data is temporarily unavailable.' },
         { status: 500 }
       );
     }
@@ -37,7 +37,7 @@ export async function GET() {
             `https://api.github.com/users/${username}/repos?per_page=100&page=${page}&sort=updated&direction=desc`,
             {
               headers,
-              cache: 'no-store'
+              next: { revalidate: CACHE_DURATION }
             }
           );
 
@@ -158,19 +158,22 @@ export async function GET() {
     // Log successful response
     console.log(`Successfully fetched and formatted ${formattedRepos.length} repositories`);
     
-    return NextResponse.json(formattedRepos);
+    return NextResponse.json(formattedRepos, {
+      headers: {
+        'Cache-Control': `public, max-age=${CACHE_DURATION}, s-maxage=${CACHE_DURATION}, stale-while-revalidate=${CACHE_DURATION}`
+      }
+    });
   } catch (error) {
     console.error('Error in GitHub API route:', error);
     
     // Return error response with status code and detailed message
     return NextResponse.json(
-      { 
-        error: error.message || 'Failed to fetch GitHub repositories',
-        details: error.stack
+      {
+        error: 'Project data is temporarily unavailable.'
       },
-      { 
-        status: error.message.includes('rate limit') ? 429 : 
-               error.message.includes('authentication') ? 401 : 500 
+      {
+        status: error.message.includes('rate limit') ? 429 :
+               error.message.includes('authentication') ? 401 : 500
       }
     );
   }

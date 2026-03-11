@@ -1,110 +1,184 @@
-# My Portfolio Website
+# Oshadha Pathiraja Portfolio
 
-A modern, responsive portfolio website built with Next.js and Tailwind CSS, showcasing my projects, skills, and experience.
+Modern portfolio website built with Next.js App Router, focused on strong performance, clean UI/UX, and production-grade SEO.
 
-## 🌐 Live Demo
+## Live Demo
 
-Visit my portfolio: [Portfolio](https://my-portfolio-new-phi.vercel.app/)
+Portfolio URL: [https://www.oshadha.dev/](https://www.oshadha.dev/)
 
-## 🚀 Features
+## Highlights
 
-- **Responsive Design**: Fully responsive layout that works on all devices
-- **Dynamic Project Showcase**: Automatically fetches and displays GitHub repositories
-- **Interactive UI**: Smooth animations and transitions using Framer Motion
-- **Dark Mode**: Modern dark theme for better viewing experience
-- **Real-time Updates**: Projects section automatically updates with new GitHub repositories
-- **Skills Visualization**: Interactive skill bars with technology icons
-- **Contact Form**: Easy way for visitors to get in touch
-- **SEO Optimized**: Built with Next.js for better search engine optimization
+- Responsive single-page home with dedicated route pages
+- Dynamic GitHub-powered project showcase with custom ordering
+- Contact form with client-side validation and EmailJS integration
+- Framer Motion animations with reduced-motion support
+- Route-level SEO metadata (title, description, canonical, Open Graph, Twitter)
+- Structured data (Person, WebSite, BreadcrumbList)
+- Route-specific Open Graph image generation
+- Sitemap and robots configured for crawling
+- API caching/revalidation for project data performance
 
-## 🛠️ Technologies Used
+## Tech Stack
 
-- **Frontend Framework**: Next.js 13
-- **Styling**: Tailwind CSS
-- **Animations**: Framer Motion
-- **Icons**: React Icons
-- **Version Control**: Git
-- **Deployment**: Vercel
-- **API Integration**: GitHub API
+- Next.js 16 (App Router)
+- React 19
+- Tailwind CSS 4
+- Framer Motion
+- React Icons
+- Vercel Analytics + Speed Insights
+- EmailJS (contact workflow)
 
-## 📦 Project Structure
+## Project Structure
 
+```text
+src/
+   app/
+      layout.jsx
+      page.jsx
+      sitemap.js
+      api/
+         github/
+         github-ordered/
+      about/
+         page.jsx
+         AboutClient.jsx
+         opengraph-image.jsx
+      projects/
+         page.jsx
+         opengraph-image.jsx
+      contact/
+         page.jsx
+         opengraph-image.jsx
+      education/
+         page.jsx
+         EducationClient.jsx
+         opengraph-image.jsx
+      experience/
+         page.jsx
+         ExperienceClient.jsx
+         opengraph-image.jsx
+      components/
+         NavBar.jsx
+         Footer.jsx
+         About.jsx
+         Education.jsx
+         Experience.jsx
+         Project.jsx
+         Contact.jsx
+         ScrollToTop.jsx
+public/
+   robots.txt
+   images/
 ```
-my-portfolio/
-├── src/
-│   ├── app/
-│   │   ├── components/     # Reusable components
-│   │   ├── about/         # About page
-│   │   ├── contact/       # Contact page
-│   │   ├── projects/      # Projects page
-│   │   └── api/          # API routes
-│   └── public/           # Static assets
-└── package.json
+
+## SEO and Performance Improvements
+
+- Dynamic import strategy for heavy below-the-fold home sections
+- Route-specific metadata on About, Projects, Contact, Education, Experience
+- Hreflang support via metadata alternates (`en-US`, `x-default`)
+- Breadcrumb JSON-LD per internal route
+- Dynamic Open Graph images for major pages
+- API response caching and ISR-style revalidation for GitHub project data
+- Improved semantic/accessibility baseline (skip link, focus styles, better image alt text)
+
+## Environment Variables
+
+Create `.env.local` in the project root:
+
+```bash
+NEXT_PUBLIC_SITE_URL=https://your-domain.com
+
+# GitHub API (server-side)
+GITHUB_TOKEN=your_github_personal_access_token
+
+# EmailJS (client-side)
+NEXT_PUBLIC_PUBLIC_KEY=your_emailjs_public_key
+NEXT_PUBLIC_SERVICE_ID=your_emailjs_service_id
+NEXT_PUBLIC_TEMPLATE_ID=your_emailjs_template_id
 ```
 
-## 🚀 Getting Started
+Notes:
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/oshadha2k01/my-portfolio.git
-   ```
+- `NEXT_PUBLIC_SITE_URL` is used for canonical URLs, metadata base, and sitemap links.
+- `GITHUB_TOKEN` is required for the ordered repositories API route.
 
-2. Install dependencies:
-   ```bash
-   cd my-portfolio
-   npm install
-   ```
+## Getting Started
 
-3. Run the development server:
-   ```bash
-   npm run dev
-   ```
+1. Clone the repository.
+2. Install dependencies.
+3. Add `.env.local` values.
+4. Run development server.
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+```bash
+git clone https://github.com/oshadha2k01/my-portfolio.git
+cd my-portfolio
+npm install
+npm run dev
+```
 
-## 🔧 Configuration
+Open [http://localhost:3000](http://localhost:3000)
 
-1. Update your GitHub username in `src/app/api/github-ordered/route.js`
-2. Modify the project details in `src/app/components/Project.jsx`
-3. Update personal information in the About page
-4. Customize the styling in the Tailwind configuration
+## Build and Run
 
-## 📝 Features in Detail
+```bash
+npm run build
+npm start
+```
 
-### Project Showcase
-- Automatically fetches repositories from GitHub
-- Displays project details, tech stack, and live demos
-- Responsive grid layout with smooth animations
-- Priority-based project ordering
+## CI/CD Pipeline (GitHub Actions)
 
-### Skills Section
-- Interactive skill bars with technology icons
-- Color-coded progress indicators
-- Responsive grid layout
-- Animated on scroll
+This project includes a ready-to-use pipeline:
 
-### Contact Form
-- Email integration
-- Form validation
-- Success/error notifications
-- Responsive design
+- Workflow file: `.github/workflows/ci-cd.yml`
+- CI trigger: pull requests to `main` and pushes to `main`
+- CD trigger: push to `main` after CI passes
 
-## 🤝 Contributing
+### What the pipeline does
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+1. **CI (Build Validation)**
+   - Checks out code
+   - Sets up Node.js 20
+   - Installs dependencies with `npm ci`
+   - Runs production build with `npm run build`
 
-## 📄 License
+2. **CD (Deploy to Vercel Production)**
+   - Runs only on pushes to `main`
+   - Pulls Vercel project/environment
+   - Builds with Vercel
+   - Deploys prebuilt artifacts to production
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+### Required GitHub repository secrets
 
-## 👨‍💻 Author
+Add these in **GitHub Repo -> Settings -> Secrets and variables -> Actions**:
 
-- **Oshadha Pathiraja**
+- `VERCEL_TOKEN`
+- `VERCEL_ORG_ID`
+- `VERCEL_PROJECT_ID`
+
+### How to connect Vercel values
+
+Run locally once (after `vercel login` and linking project):
+
+```bash
+vercel link
+```
+
+Then copy values from `.vercel/project.json`:
+
+- `orgId` -> `VERCEL_ORG_ID`
+- `projectId` -> `VERCEL_PROJECT_ID`
+
+Create a Vercel token from your Vercel account settings and save it as `VERCEL_TOKEN`.
+
+## Customization
+
+- Update GitHub sorting/priorities in `src/app/api/github-ordered/route.js`
+- Update project card descriptions in `src/app/components/Project.jsx`
+- Update personal/about content in `src/app/components/About.jsx` and `src/app/about/AboutClient.jsx`
+- Update social/profile links in footer and contact components
+
+## Author
+
+- Oshadha Pathiraja
 - GitHub: [@oshadha2k01](https://github.com/oshadha2k01)
 - LinkedIn: [Oshadha Pathiraja](https://www.linkedin.com/in/oshadha-pathiraja-77b08333a/)
-
-## 🙏 Acknowledgments
-
-- Thanks to all the open-source projects that made this portfolio possible
-- Special thanks to the Next.js and Tailwind CSS communities
-- Inspired by modern portfolio designs and best practices

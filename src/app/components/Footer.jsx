@@ -1,5 +1,3 @@
-"use client"
-
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 
 const navLinks = [
@@ -18,13 +16,8 @@ const socialLinks = [
 ];
 
 export default function Footer() {
-  const scrollTo = (id) => {
-    const el = document.getElementById(id);
-    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 64, behavior: 'smooth' });
-  };
-
   return (
-    <footer className="bg-gray-800 text-gray-400 pt-10 pb-6">
+    <footer className="bg-gray-800 text-gray-300 pt-10 pb-6">
       <div className="max-w-6xl mx-auto px-6">
 
         {/* Top row: brand + nav + social */}
@@ -44,13 +37,12 @@ export default function Footer() {
             <ul className="grid grid-cols-2 gap-x-8 gap-y-1.5 list-none p-0 m-0">
               {navLinks.map(({ label, id }) => (
                 <li key={id}>
-                  <button
-                    type="button"
-                    onClick={() => scrollTo(id)}
-                    className="text-sm bg-transparent border-none cursor-pointer text-gray-400 hover:text-blue-400 transition-colors py-2 px-0"
+                  <a
+                    href={`/#${id}`}
+                    className="text-sm bg-transparent border-none cursor-pointer text-gray-300 hover:text-blue-400 transition-colors py-2 px-0"
                   >
                     {label}
-                  </button>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -67,7 +59,7 @@ export default function Footer() {
                   target={href.startsWith('mailto') ? undefined : '_blank'}
                   rel={href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
                   aria-label={label}
-                  className={`p-3 text-xl text-gray-400 ${hover} transition-colors`}
+                  className={`p-3 text-xl text-gray-300 ${hover} transition-colors`}
                 >
                   <Icon aria-hidden="true" />
                 </a>
@@ -82,7 +74,6 @@ export default function Footer() {
         {/* Bottom row */}
         <div className="flex flex-col sm:flex-row justify-between items-center gap-2 text-sm">
           <p>&copy; {new Date().getFullYear()} Oshadha Pathiraja. All rights reserved.</p>
-          <p>Built with <span className="text-blue-400">Next.js</span> &amp; <span className="text-blue-400">Tailwind CSS</span></p>
         </div>
 
       </div>

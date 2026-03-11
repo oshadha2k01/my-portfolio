@@ -1,11 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import Loading from "../loading";
 import {
-  FaCheckCircle,
   FaReact,
   FaNodeJs,
   FaDatabase,
@@ -36,6 +34,100 @@ import {
   SiTypescript,
   SiSocketdotio,
 } from "react-icons/si";
+
+function SliderButton({ direction, onClick, label }) {
+  const isPrev = direction === "prev";
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`absolute ${isPrev ? "-left-2 sm:-left-4" : "-right-2 sm:-right-4"} top-1/2 -translate-y-1/2 z-10 bg-gray-800 p-2 sm:p-3 rounded-full shadow-lg hover:bg-gray-700 transition`}
+      aria-label={label}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-5 w-5 sm:h-6 sm:w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        {isPrev ? (
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M15 19l-7-7 7-7"
+          />
+        ) : (
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M9 5l7 7-7 7"
+          />
+        )}
+      </svg>
+    </button>
+  );
+}
+
+function ProjectStats({ repo }) {
+  if (repo.stargazers_count <= 0 && repo.forks_count <= 0) {
+    return null;
+  }
+
+  return (
+    <div className="flex items-center mb-3 sm:mb-4 text-xs sm:text-sm text-gray-400">
+      {repo.stargazers_count > 0 && (
+        <span className="flex items-center mr-3 sm:mr-4">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-3 w-3 sm:h-4 sm:w-4 mr-1"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+          </svg>
+          {repo.stargazers_count}
+        </span>
+      )}
+      {repo.forks_count > 0 && (
+        <span className="flex items-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-3 w-3 sm:h-4 sm:w-4 mr-1"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"
+            />
+          </svg>
+          {repo.forks_count}
+        </span>
+      )}
+    </div>
+  );
+}
+
+function PaginationDot({ active, index, onClick }) {
+  return (
+    <button
+      key={index}
+      type="button"
+      onClick={onClick}
+      className={`mx-1.5 sm:mx-2 h-1.5 sm:h-2 w-6 sm:w-8 rounded-full transition-colors ${
+        active ? "bg-blue-500" : "bg-gray-600"
+      }`}
+      aria-label={`Go to slide ${index + 1}`}
+      aria-current={active ? "true" : undefined}
+    />
+  );
+}
 
 export default function Project() {
   const [repos, setRepos] = useState([]);
@@ -310,46 +402,16 @@ export default function Project() {
             {/* Slider Navigation */}
             {repos.length > projectsPerSlide && (
               <>
-                <button
+                <SliderButton
+                  direction="prev"
                   onClick={prevSlide}
-                  className="absolute -left-2 sm:-left-4 top-1/2 -translate-y-1/2 z-10 bg-gray-800 p-2 sm:p-3 rounded-full shadow-lg hover:bg-gray-700 transition"
-                  aria-label="Previous projects"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5 sm:h-6 sm:w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M15 19l-7-7 7-7"
-                    />
-                  </svg>
-                </button>
-                <button
+                  label="Previous projects"
+                />
+                <SliderButton
+                  direction="next"
                   onClick={nextSlide}
-                  className="absolute -right-2 sm:-right-4 top-1/2 -translate-y-1/2 z-10 bg-gray-800 p-2 sm:p-3 rounded-full shadow-lg hover:bg-gray-700 transition"
-                  aria-label="Next projects"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5 sm:h-6 sm:w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                </button>
+                  label="Next projects"
+                />
               </>
             )}
 
@@ -385,7 +447,7 @@ export default function Project() {
                                 {projectImage.imagePath ? (
                                   <Image
                                     src={projectImage.imagePath}
-                                    alt={`${repo.name} preview`}
+                                    alt={`${projectImage.repoName} project preview`}
                                     fill
                                     className="object-cover"
                                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -393,7 +455,7 @@ export default function Project() {
                                 ) : (
                                   <Image
                                     src={projectImage.fallbackUrl}
-                                    alt={`${repo.name} preview`}
+                                    alt={`${projectImage.repoName} project preview`}
                                     fill
                                     className="object-cover"
                                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -1449,40 +1511,7 @@ export default function Project() {
                                 </div>
 
                                 {/* Stats section */}
-                                <div className="flex items-center mb-3 sm:mb-4 text-xs sm:text-sm text-gray-400">
-                                  {repo.stargazers_count > 0 && (
-                                    <span className="flex items-center mr-3 sm:mr-4">
-                                      <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        className="h-3 w-3 sm:h-4 sm:w-4 mr-1"
-                                        fill="currentColor"
-                                        viewBox="0 0 24 24"
-                                      >
-                                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                                      </svg>
-                                      {repo.stargazers_count}
-                                    </span>
-                                  )}
-                                  {repo.forks_count > 0 && (
-                                    <span className="flex items-center">
-                                      <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        className="h-3 w-3 sm:h-4 sm:w-4 mr-1"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                      >
-                                        <path
-                                          strokeLinecap="round"
-                                          strokeLinejoin="round"
-                                          strokeWidth={2}
-                                          d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"
-                                        />
-                                      </svg>
-                                      {repo.forks_count}
-                                    </span>
-                                  )}
-                                </div>
+                                <ProjectStats repo={repo} />
                               </div>
                             </div>
                           </div>
@@ -1500,13 +1529,11 @@ export default function Project() {
                 {Array.from({
                   length: Math.ceil(repos.length / projectsPerSlide),
                 }).map((_, index) => (
-                  <button
+                  <PaginationDot
                     key={index}
+                    index={index}
+                    active={currentSlide === index}
                     onClick={() => setCurrentSlide(index)}
-                    className={`mx-1.5 sm:mx-2 h-1.5 sm:h-2 w-6 sm:w-8 rounded-full transition-colors ${
-                      currentSlide === index ? "bg-blue-500" : "bg-gray-600"
-                    }`}
-                    aria-label={`Go to slide ${index + 1}`}
                   />
                 ))}
               </div>

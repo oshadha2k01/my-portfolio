@@ -1,32 +1,42 @@
-"use client"
+import EducationClient from './EducationClient';
 
-import { motion } from 'framer-motion';
-import NavBar from '../components/NavBar';
-import Footer from '../components/Footer';
-import Education from '../components/Education';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+
+export const metadata = {
+  title: 'Education',
+  description: 'Education background and academic qualifications of Oshadha Pathiraja.',
+  alternates: { canonical: `${siteUrl}/education` },
+  openGraph: {
+    title: 'Education | Oshadha Pathiraja',
+    description: 'Academic background of Oshadha Pathiraja.',
+    url: `${siteUrl}/education`,
+    images: [{ url: '/education/opengraph-image', width: 1200, height: 630, alt: 'Education - Oshadha Pathiraja' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Education | Oshadha Pathiraja',
+    description: 'Academic background of Oshadha Pathiraja.',
+    images: ['/education/opengraph-image'],
+  },
+};
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+    { '@type': 'ListItem', position: 2, name: 'Education', item: `${siteUrl}/education` },
+  ],
+};
 
 export default function EducationPage() {
   return (
-    <div className="min-h-screen bg-gray-900 text-white pt-16 flex flex-col">
-      <NavBar />
-      
-
-      <section className="py-10">
-        
-        <div className="max-w-4xl mx-auto px-4">
-          <motion.div 
-            className="bg-gray-800 rounded-xl p-8 shadow-lg"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            
-            <Education />
-          </motion.div>
-        </div>
-      </section>
-
-      <Footer />
-    </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <EducationClient />
+    </>
   );
-} 
+}

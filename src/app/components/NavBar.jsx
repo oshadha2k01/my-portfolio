@@ -1,12 +1,20 @@
 "use client"
 
 import { useState, useEffect } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 
 export default function NavBar() {
   const [activeSection, setActiveSection] = useState('home');
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
+    if (pathname !== '/') {
+      setActiveSection('');
+      return;
+    }
+
     const sections = ['home', 'about', 'education', 'experience', 'projects', 'contact'];
 
     const handleScroll = () => {
@@ -24,9 +32,15 @@ export default function NavBar() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [pathname]);
 
   const scrollToSection = (id) => {
+    if (pathname !== '/') {
+      router.push(`/#${id}`);
+      setMenuOpen(false);
+      return;
+    }
+
     const el = document.getElementById(id);
     if (el) {
       const top = el.getBoundingClientRect().top + window.scrollY - 64;
@@ -66,7 +80,7 @@ export default function NavBar() {
               key={id}
               type="button"
               onClick={() => scrollToSection(id)}
-              aria-current={activeSection === id ? 'true' : undefined}
+              aria-current={activeSection === id ? 'page' : undefined}
               className={`text-base py-1 px-1 bg-transparent border-none cursor-pointer text-white ${isActive(id)}`}
             >
               {label}
@@ -100,7 +114,7 @@ export default function NavBar() {
               key={id}
               type="button"
               onClick={() => scrollToSection(id)}
-              aria-current={activeSection === id ? 'true' : undefined}
+              aria-current={activeSection === id ? 'page' : undefined}
               className={`text-base py-3 px-3 w-full block bg-transparent border-none cursor-pointer text-white text-left ${isActive(id)}`}
             >
               {label}

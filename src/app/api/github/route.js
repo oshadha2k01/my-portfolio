@@ -8,10 +8,6 @@ export async function GET() {
     // Your GitHub username
     const username = 'oshadha2k01';
     
-    // Add caching headers to the response
-    const response = NextResponse.next();
-    response.headers.set('Cache-Control', `max-age=${CACHE_DURATION}, s-maxage=${CACHE_DURATION}, stale-while-revalidate`);
-    
     // Function to fetch repositories with pagination
     async function fetchAllRepos() {
       let page = 1;
@@ -27,8 +23,7 @@ export async function GET() {
               'Accept': 'application/vnd.github.v3+json',
               'User-Agent': 'NextJS-Portfolio-App'
             },
-            // Ensure we don't cache the response to always get fresh data
-            cache: 'no-store'
+            next: { revalidate: CACHE_DURATION }
           }
         );
         
@@ -57,7 +52,11 @@ export async function GET() {
     const repos = await fetchAllRepos();
     console.log(`Successfully fetched ${repos.length} repositories`);
     
-    return NextResponse.json(repos);
+    return NextResponse.json(repos, {
+      headers: {
+        'Cache-Control': `public, max-age=${CACHE_DURATION}, s-maxage=${CACHE_DURATION}, stale-while-revalidate=${CACHE_DURATION}`
+      }
+    });
   } catch (error) {
     console.error('Error fetching repos:', error);
     return NextResponse.json(

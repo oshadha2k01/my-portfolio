@@ -227,9 +227,6 @@ export default function Contact() {
                   height={224}
                   alt="Oshadha Pathiraja"
                   className="w-full h-full object-cover"
-                  onError={(e) => {
-                    e.target.src = "https://via.placeholder.com/224?text=Profile";
-                  }}
                 />
               </div>
 

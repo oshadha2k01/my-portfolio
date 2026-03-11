@@ -1,5 +1,6 @@
 "use client"
 
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
@@ -10,12 +11,27 @@ import {
 import { FaLaptopCode } from 'react-icons/fa';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
-import About from './components/About';
-import Education from './components/Education';
-import Experience from './components/Experience';
-import Project from './components/Project';
-import Contact from './components/Contact';
 import ScrollToTop from './components/ScrollToTop';
+
+const About = dynamic(() => import('./components/About'), {
+  loading: () => <div className="max-w-7xl mx-auto px-4 py-14" aria-hidden="true" />,
+});
+
+const Education = dynamic(() => import('./components/Education'), {
+  loading: () => <div className="h-52 bg-gray-800 rounded-xl" aria-hidden="true" />,
+});
+
+const Experience = dynamic(() => import('./components/Experience'), {
+  loading: () => <div className="h-52 bg-gray-800 rounded-xl" aria-hidden="true" />,
+});
+
+const Project = dynamic(() => import('./components/Project'), {
+  loading: () => <div className="max-w-7xl mx-auto px-4 py-14" aria-hidden="true" />,
+});
+
+const Contact = dynamic(() => import('./components/Contact'), {
+  loading: () => <div className="max-w-6xl mx-auto px-4 py-16" aria-hidden="true" />,
+});
 
 const orbitIcons = [
   { Icon: SiHtml5,       color: '#E34F26' },
@@ -41,7 +57,7 @@ function SectionDivider() {
 
 export default function Home() {
   return (
-    <main className="bg-gray-900 text-white">
+    <main id="main-content" className="bg-gray-900 text-white">
       <NavBar />
 
       {/* ── Home ── */}
@@ -98,16 +114,14 @@ export default function Home() {
                 alt="Oshadha Pathiraja"
                 className="w-full h-full object-cover"
                 style={{ borderRadius: '50%' }}
+                sizes="(max-width: 640px) 160px, (max-width: 768px) 208px, 288px"
                 priority
-                onError={(e) => {
-                  e.target.src = "https://via.placeholder.com/288?text=Profile";
-                }}
               />
             </motion.div>
           </div>
 
           {/* Profile text */}
-          <div className="text-center lg:text-left whitespace-nowrap">
+          <div className="text-center lg:text-left whitespace-normal md:whitespace-nowrap">
             <motion.h1
               className="text-3xl sm:text-5xl xl:text-6xl font-semibold mb-4 tracking-tight text-white"
               initial={{ opacity: 0, y: 20 }}
