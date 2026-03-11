@@ -29,7 +29,12 @@ import {
   SiPython,
   SiKotlin,
   SiFigma,
-  SiJsonwebtokens ,
+  SiJsonwebtokens,
+  SiSwagger,
+  SiFastapi,
+  SiNextdotjs,
+  SiTypescript,
+  SiSocketdotio,
 } from "react-icons/si";
 
 export default function Project() {
@@ -38,6 +43,7 @@ export default function Project() {
   const [error, setError] = useState(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   // Responsive projects per slide
   const projectsPerSlide = isMobile ? 1 : 2;
@@ -51,14 +57,21 @@ export default function Project() {
       setIsMobile(window.innerWidth < 768);
     };
 
-    // Initial check
     checkMobile();
+    setMounted(true);
 
-    // Add event listener for window resize
-    window.addEventListener("resize", checkMobile);
+    let timer;
+    const debouncedCheck = () => {
+      clearTimeout(timer);
+      timer = setTimeout(checkMobile, 100);
+    };
 
-    // Cleanup
-    return () => window.removeEventListener("resize", checkMobile);
+    window.addEventListener("resize", debouncedCheck);
+
+    return () => {
+      window.removeEventListener("resize", debouncedCheck);
+      clearTimeout(timer);
+    };
   }, []);
 
   useEffect(() => {
@@ -158,16 +171,10 @@ export default function Project() {
           "The Tourism Management System in Sri Lanka enhances the travel experience for local and foreign tourists by providing a centralized platform for accessing travel information. It helps streamline trip planning with details on attractions, transport, accommodations, and events. The system promotes safe, convenient, and sustainable tourism across the island.",
         displayName: "Tourism Management System",
       },
-      "react-app": {
-        image: "/images/repos/react-app.png",
+      "ShoporaShoppingHub": {
+        image: "/images/repos/ShoporaShoppingHub.png",
         description: "A simple React application that show the products",
         displayName: "Product Store",
-      },
-      "backend-task": {
-        image: "/images/repos/backend-task.png",
-        description:
-          "A simple backend task management system built with Node.js and Express, allowing users to create, read, update, and delete products.",
-        displayName: "Backend App",
       },
       "server-monitoring-system": {
         image: "/images/repos/server-monitoring-system.png",
@@ -175,8 +182,14 @@ export default function Project() {
           "This project implements a simple monitoring system to track server performance metrics such as CPU usage, memory usage, and disk space. It triggers email alerts when usage exceeds predefined thresholds and logs metrics for analysis.",
         displayName: "Monitoring System",
       },
-      "Task-Project": {
-        image: "/images/repos/Task-Project.png",
+      "SmartTasker": {
+        image: "/images/repos/SmartTasker.png",
+        description:
+          "SmartTasker is a modern, full-stack AI-powered task management application featuring real-time notifications, intelligent task prioritization, and natural language task generation using a FastAPI microservice.",
+        displayName: "AI Task Manager",
+      },
+      "DailyTrackerWeb": {
+        image: "/images/repos/DailyTrackerWeb.png",
         description:
           "This project implements a simple task management system to track tasks and their statuses. It allows users to create, update, and delete tasks, as well as set deadlines and priorities.",
         displayName: "Task Management System",
@@ -188,13 +201,18 @@ export default function Project() {
         displayName: "Issue Tracker Web App",
       },
 
-      "React-Node": {
-        image: "/images/repos/React-Node.png",
+      // "React-Node": {
+      //   image: "/images/repos/React-Node.png",
+      //   description:
+      //     "A complete product app full-stack web application built with React.js frontend and Node.js/Express backend, featuring user authentication and product management with CRUD operations.",
+      //   displayName: "React-Node Web App",
+      // },
+      "EduNexus": {
+        image: "/images/repos/EduNexus.png",
         description:
-          "A complete product app full-stack web application built with React.js frontend and Node.js/Express backend, featuring user authentication and product management with CRUD operations.",
-        displayName: "React-Node Web App",
+          "EduNexus is a modern, scalable educational management platform built with a microservices architecture using FastAPI. It features a centralized API Gateway that handles authentication, request logging, and service routing.",
+        displayName: "API Gateway",
       },
-
       "ERP-System": {
         image: "/images/repos/ERP-System.png",
         description:
@@ -269,11 +287,17 @@ export default function Project() {
     };
   };
 
+  if (!mounted) return (
+    <section id="projects" className="py-14">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-96" />
+    </section>
+  );
+
   return (
-    <section id="projects" className="py-4 sm:py-6 md:py-8">
+    <section id="projects" className="py-14">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl sm:text-4xl font-semibold text-center mb-6 sm:mb-8">
-          My Projects
+        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-10 text-white">
+          My <span className="text-blue-400">Projects</span>
         </h2>
         {loading ? (
           <Loading />
@@ -769,6 +793,54 @@ export default function Project() {
                                         </div>
                                       </div>
                                     </>
+                                  ) : repo.name === "SmartTasker" ? (
+                                    <>
+                                      <p>
+                                        A modern, full-stack AI-powered task
+                                        management app with real-time
+                                        notifications, intelligent
+                                        prioritization, and natural language
+                                        task generation via a FastAPI
+                                        microservice.
+                                      </p>
+                                      <div className="mt-2">
+                                        <strong>Tech Stack:</strong>
+                                        <div className="grid grid-cols-2 gap-2 mt-2">
+                                          <div className="flex items-center">
+                                            <SiNextdotjs className="text-[#a3a3a3] text-xl mr-2" />
+                                            <span>Next.js 16</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <SiTailwindcss className="text-[#06B6D4] text-xl mr-2" />
+                                            <span>Tailwind CSS</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <FaNodeJs className="text-[#339933] text-xl mr-2" />
+                                            <span>Node.js</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <SiExpress className="text-white text-xl mr-2" />
+                                            <span>Express.js</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <SiMongodb className="text-[#47A248] text-xl mr-2" />
+                                            <span>MongoDB</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <SiSocketdotio className="text-[#a3a3a3] text-xl mr-2" />
+                                            <span>Socket.io</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <SiPython className="text-[#3776AB] text-xl mr-2" />
+                                            <span>Python</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <SiFastapi className="text-[#009688] text-xl mr-2" />
+                                            <span>FastAPI</span>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </>
                                   ) : repo.name === "Task-Project" ? (
                                     <>
                                       <p>
@@ -1226,7 +1298,7 @@ export default function Project() {
                                         </div>
                                       </div>
                                     </>
-                                  ) : repo.name === "backend-task" ? (
+                                  ) : repo.name === "DailyTrackerWeb" ? (
                                     <>
                                       <p>
                                         A simple backend task management system
@@ -1256,7 +1328,37 @@ export default function Project() {
                                         </div>
                                       </div>
                                     </>
-                                  ) : repo.name === "react-app" ? (
+                                  ) : repo.name === "EduNexus" ? (
+                                    <>
+                                      <p>
+                                        A modern, scalable educational
+                                        management platform built with a
+                                        microservices architecture using
+                                        FastAPI and a centralized API Gateway.
+                                      </p>
+                                      <div className="mt-2">
+                                        <strong>Tech Stack:</strong>
+                                        <div className="grid grid-cols-2 gap-2 mt-2">
+                                          <div className="flex items-center">
+                                            <SiPython className="text-[#3776AB] text-xl mr-2" />
+                                            <span>Python</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <SiFastapi className="text-[#009688] text-xl mr-2" />
+                                            <span>FastAPI</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <SiSwagger className="text-[#85EA2D] text-xl mr-2" />
+                                            <span>Swagger</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <FaServer className="text-[#6366F1] text-xl mr-2" />
+                                            <span>Microservices</span>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </>
+                                  ) : repo.name === "ShoporaShoppingHub" ? (
                                     <>
                                       <p>
                                         A simple React application that show the

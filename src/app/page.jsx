@@ -1,82 +1,215 @@
 "use client"
 
-import { useEffect } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
+import {
+  SiReact, SiJavascript, SiNodedotjs, SiMongodb, SiTypescript, SiTailwindcss
+} from 'react-icons/si';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
+import About from './components/About';
+import Education from './components/Education';
+import Experience from './components/Experience';
+import Project from './components/Project';
+import Contact from './components/Contact';
+import ScrollToTop from './components/ScrollToTop';
+
+const orbitIcons = [
+  { Icon: SiReact,       color: '#61DAFB' },
+  { Icon: SiJavascript,  color: '#F7DF1E' },
+  { Icon: SiNodedotjs,   color: '#339933' },
+  { Icon: SiMongodb,     color: '#47A248' },
+  { Icon: SiTypescript,  color: '#3178C6' },
+  { Icon: SiTailwindcss, color: '#06B6D4' },
+];
+
+function SectionDivider() {
+  return (
+    <div className="max-w-5xl mx-auto px-6" aria-hidden="true">
+      <div className="h-px bg-gradient-to-r from-transparent via-blue-800/50 to-transparent" />
+    </div>
+  );
+}
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gray-900 text-white pt-16 flex flex-col">
-      {/* Navigation Bar */}
+    <main className="bg-gray-900 text-white">
       <NavBar />
 
-      {/* Profile Section - Enhanced with better centering and larger elements */}
-      <section className="py-0 bg-gradient-to-r from-gray-900 via-blue-950 to-purple-900 flex-grow flex items-center justify-center">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-12 px-6">
-          {/* Larger Profile Photo - maintaining circular shape */}
-          <motion.div 
-            className="w-64 h-64 sm:w-72 sm:h-72 rounded-full overflow-hidden shadow-2xl border-4 border-blue-950 flex items-center justify-center bg-gray-900"
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-          >
-             <Image 
-              src="/images/profile_photo.png" 
-              width={288} 
-              height={288} 
-              alt="Profile Photo"
-              className="w-full h-full object-cover"
-              style={{ borderRadius: '50%' }}
-              onError={(e) => {
-                e.target.src = "https://via.placeholder.com/288?text=Profile"
-              }}
-            /> 
-          </motion.div>
-          
-          {/* Profile Info with enhanced typography */}
-          <div className="text-center md:text-left">
-            {/* Name with Type Animation - larger font */}
+      {/* ── Home ── */}
+      <section
+        id="home"
+        className="min-h-screen pt-20 bg-gradient-to-r from-gray-900 via-blue-950 to-purple-900 flex items-center justify-center"
+      >
+        <div className="max-w-5xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-12 px-6 py-16">
+
+          {/* Orbital icons + profile image */}
+          <div className="relative flex items-center justify-center w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 flex-shrink-0">
+
+            {/* Floating tech icons */}
+            {orbitIcons.map(({ Icon, color }, i) => {
+              const angle = (i * 60 * Math.PI) / 180;
+              const rx = 44;
+              const cx = 50 + rx * Math.sin(angle);
+              const cy = 50 - rx * Math.cos(angle);
+              return (
+                <motion.div
+                  key={i}
+                  aria-hidden="true"
+                  className="absolute w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-800/90 border border-gray-600 flex items-center justify-center shadow-xl z-10"
+                  style={{ left: `${cx}%`, top: `${cy}%`, transform: 'translate(-50%, -50%)' }}
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1, y: [0, -8, 0] }}
+                  transition={{
+                    opacity: { duration: 0.4, delay: 0.9 + i * 0.12 },
+                    scale:   { duration: 0.4, delay: 0.9 + i * 0.12 },
+                    y: {
+                      duration: 2.5 + i * 0.3,
+                      repeat: Infinity,
+                      ease: 'easeInOut',
+                      delay: 1.5 + i * 0.25,
+                    },
+                  }}
+                >
+                  <Icon size={20} color={color} />
+                </motion.div>
+              );
+            })}
+
+            {/* Profile image */}
+            <motion.div
+              className="w-52 h-52 sm:w-64 sm:h-64 rounded-full overflow-hidden shadow-2xl border-4 border-blue-900 flex items-center justify-center bg-gray-900 z-20 relative"
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+            >
+              <Image
+                src="/images/profile_photo.png"
+                width={288}
+                height={288}
+                alt="Oshadha Pathiraja"
+                className="w-full h-full object-cover"
+                style={{ borderRadius: '50%' }}
+                priority
+                onError={(e) => {
+                  e.target.src = "https://via.placeholder.com/288?text=Profile";
+                }}
+              />
+            </motion.div>
+          </div>
+
+          {/* Profile text */}
+          <div className="text-center lg:text-left whitespace-nowrap">
+            <motion.h1
+              className="text-3xl sm:text-5xl xl:text-6xl font-semibold mb-4 tracking-tight text-white"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              Oshadha Pathiraja
+            </motion.h1>
+
             <TypeAnimation
               sequence={[
-                'Oshadha Pathiraja',
-                2000,
-                'Oshadha Pathiraja',
-                2000,
-              ]}
-              wrapper="h2"
-              repeat={Infinity}
-              className="text-5xl sm:text-6xl font-semibold mb-4 tracking-tight text-white"
-            />
-            
-            {/* Position with Type Animation - larger font */}
-            <TypeAnimation
-              sequence={[
-                'Associate Full Stack Developer',
-                2000,
-                'Associate Software Engineer',
-                2000,
+                'Full Stack Developer', 2000,
+                'Software Engineer',    2000,
+
               ]}
               wrapper="p"
               repeat={Infinity}
-              className="text-2xl sm:text-3xl mb-6 text-gray-100"
+              className="text-2xl sm:text-3xl mb-8 text-blue-300 font-medium"
             />
-            {/* Get My CV Button */}
-            <a
+
+            {/* <motion.a
               href="/CV_Oshadha_Pathiraja.pdf?v=1"
               download
-              className="inline-block mt-2 px-6 py-3 bg-gradient-to-r from-blue-950 via-purple-900 to-purple-800 text-white font-semibold rounded-lg shadow transition hover:from-purple-900 hover:to-blue-950"
+              className="inline-block px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg shadow-lg hover:from-blue-500 hover:to-purple-500 transition-all duration-300 hover:shadow-blue-500/25 hover:shadow-xl"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
             >
-              Download My CV
-            </a>
+              Download CV
+            </motion.a> */}
           </div>
         </div>
       </section>
 
-      {/* Footer - Using component */}
+      <SectionDivider />
+
+      {/* ── About ── */}
+      <div id="about">
+        <About />
+      </div>
+
+      <SectionDivider />
+
+      {/* ── Education ── */}
+      <section id="education" className="py-14 bg-gray-900">
+        <div className="max-w-4xl mx-auto px-4">
+          <motion.h2
+            className="text-3xl sm:text-4xl font-bold text-center mb-10 text-white"
+            initial={{ opacity: 0, y: -10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            My <span className="text-blue-400">Education</span>
+          </motion.h2>
+          <motion.div
+            className="bg-gray-800 rounded-xl p-4 sm:p-8 shadow-lg"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <Education />
+          </motion.div>
+        </div>
+      </section>
+
+      <SectionDivider />
+
+      {/* ── Experience ── */}
+      <section id="experience" className="py-14 bg-gray-900">
+        <div className="max-w-4xl mx-auto px-4">
+          <motion.h2
+            className="text-3xl sm:text-4xl font-bold text-center mb-10 text-white"
+            initial={{ opacity: 0, y: -10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            My <span className="text-blue-400">Experience</span>
+          </motion.h2>
+          <motion.div
+            className="bg-gray-800 rounded-xl p-4 sm:p-8 shadow-lg"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <Experience />
+          </motion.div>
+        </div>
+      </section>
+
+      <SectionDivider />
+
+      {/* ── Projects ── */}
+      <div className="bg-gray-900 text-white">
+        <Project />
+      </div>
+
+      <SectionDivider />
+
+      {/* ── Contact ── */}
+      <div id="contact">
+        <Contact />
+      </div>
+
       <Footer />
-    </div>
+      <ScrollToTop />
+    </main>
   );
 }
