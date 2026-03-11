@@ -4,8 +4,10 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import {
-  SiReact, SiJavascript, SiNodedotjs, SiMongodb, SiTypescript, SiTailwindcss
+  SiReact, SiJavascript, SiNodedotjs, SiMongodb, SiTypescript, SiTailwindcss,
+  SiMysql, SiPostman, SiHtml5, SiCss3,
 } from 'react-icons/si';
+import { FaLaptopCode } from 'react-icons/fa';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import About from './components/About';
@@ -16,12 +18,17 @@ import Contact from './components/Contact';
 import ScrollToTop from './components/ScrollToTop';
 
 const orbitIcons = [
-  { Icon: SiReact,       color: '#61DAFB' },
+  { Icon: SiHtml5,       color: '#E34F26' },
+  { Icon: SiCss3,        color: '#1572B6' },
   { Icon: SiJavascript,  color: '#F7DF1E' },
+  { Icon: SiTypescript,  color: '#3178C6' },
+  { Icon: SiReact,       color: '#61DAFB' },
+  { Icon: SiTailwindcss, color: '#06B6D4' },
   { Icon: SiNodedotjs,   color: '#339933' },
   { Icon: SiMongodb,     color: '#47A248' },
-  { Icon: SiTypescript,  color: '#3178C6' },
-  { Icon: SiTailwindcss, color: '#06B6D4' },
+  { Icon: SiMysql,       color: '#4479A1' },
+  { Icon: SiPostman,     color: '#FF6C37' },
+  { Icon: FaLaptopCode,  color: '#a78bfa' },
 ];
 
 function SectionDivider() {
@@ -45,41 +52,41 @@ export default function Home() {
         <div className="max-w-5xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-12 px-6 py-16">
 
           {/* Orbital icons + profile image */}
-          <div className="relative flex items-center justify-center w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 flex-shrink-0">
+          <div className="relative flex items-center justify-center w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 flex-shrink-0">
 
             {/* Floating tech icons */}
             {orbitIcons.map(({ Icon, color }, i) => {
-              const angle = (i * 60 * Math.PI) / 180;
-              const rx = 44;
+              const angle = (i * (360 / orbitIcons.length) * Math.PI) / 180;
+              const rx = 43;
               const cx = 50 + rx * Math.sin(angle);
               const cy = 50 - rx * Math.cos(angle);
               return (
                 <motion.div
                   key={i}
                   aria-hidden="true"
-                  className="absolute w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-800/90 border border-gray-600 flex items-center justify-center shadow-xl z-10"
+                  className="absolute w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gray-800/90 border border-gray-600 flex items-center justify-center shadow-xl z-10"
                   style={{ left: `${cx}%`, top: `${cy}%`, transform: 'translate(-50%, -50%)' }}
                   initial={{ opacity: 0, scale: 0 }}
                   animate={{ opacity: 1, scale: 1, y: [0, -8, 0] }}
                   transition={{
-                    opacity: { duration: 0.4, delay: 0.9 + i * 0.12 },
-                    scale:   { duration: 0.4, delay: 0.9 + i * 0.12 },
+                    opacity: { duration: 0.4, delay: 0.9 + i * 0.1 },
+                    scale:   { duration: 0.4, delay: 0.9 + i * 0.1 },
                     y: {
-                      duration: 2.5 + i * 0.3,
+                      duration: 2.5 + i * 0.25,
                       repeat: Infinity,
                       ease: 'easeInOut',
-                      delay: 1.5 + i * 0.25,
+                      delay: 1.5 + i * 0.2,
                     },
                   }}
                 >
-                  <Icon size={20} color={color} />
+                  <Icon size={17} color={color} />
                 </motion.div>
               );
             })}
 
             {/* Profile image */}
             <motion.div
-              className="w-52 h-52 sm:w-64 sm:h-64 rounded-full overflow-hidden shadow-2xl border-4 border-blue-900 flex items-center justify-center bg-gray-900 z-20 relative"
+              className="w-40 h-40 sm:w-52 sm:h-52 rounded-full overflow-hidden shadow-2xl border-4 border-blue-900 flex items-center justify-center bg-gray-900 z-20 relative"
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.7, ease: "easeOut" }}
