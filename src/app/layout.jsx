@@ -1,13 +1,13 @@
 import { Suspense } from 'react';
-import { Poppins } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import './globals.css';
 import Loading from './loading';
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
-const poppins = Poppins({
+const inter = Inter({
   subsets: ['latin'],
-  weight: ['400', '600', '700'],
+  weight: ['400', '500', '600', '700'],
   display: 'swap',
 });
 
@@ -101,7 +101,7 @@ const websiteJsonLd = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={poppins.className}>
+      <body className={inter.className}>
         <a href="#main-content" className="skip-link">Skip to main content</a>
         <script
           type="application/ld+json"
