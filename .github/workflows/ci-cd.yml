@@ -38,7 +38,7 @@ jobs:
   deploy:
     name: Deploy to Vercel (Production)
     needs: ci
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && secrets.VERCEL_TOKEN != '' && secrets.VERCEL_ORG_ID != '' && secrets.VERCEL_PROJECT_ID != ''
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment: production
 
@@ -52,16 +52,38 @@ jobs:
           node-version: 20
           cache: npm
 
+      - name: Check Vercel secrets
+        id: check_secrets
+        shell: bash
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          if [[ -n "$VERCEL_TOKEN" && -n "$VERCEL_ORG_ID" && -n "$VERCEL_PROJECT_ID" ]]; then
+            echo "deploy_enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "deploy_enabled=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Skip deploy (secrets missing)
+        if: steps.check_secrets.outputs.deploy_enabled != 'true'
+        run: echo "::notice::Vercel deployment skipped because one or more required secrets are missing (VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID)."
+
       - name: Install Vercel CLI
+        if: steps.check_secrets.outputs.deploy_enabled == 'true'
         run: npm i -g vercel@latest
 
       - name: Pull Vercel Environment Information
+        if: steps.check_secrets.outputs.deploy_enabled == 'true'
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Build Project Artifacts
+        if: steps.check_secrets.outputs.deploy_enabled == 'true'
         run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy Project Artifacts to Vercel
+        if: steps.check_secrets.outputs.deploy_enabled == 'true'
         run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
