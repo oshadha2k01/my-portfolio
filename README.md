@@ -130,7 +130,7 @@ npm start
 This project includes a ready-to-use pipeline:
 
 - Workflow file: `.github/workflows/ci-cd.yml`
-- CI trigger: pull requests to `main` and pushes to `main`
+- CI trigger: pull requests and pushes on all branches
 - CD trigger: push to `main` after CI passes
 
 ### What the pipeline does
@@ -169,6 +169,18 @@ Then copy values from `.vercel/project.json`:
 - `projectId` -> `VERCEL_PROJECT_ID`
 
 Create a Vercel token from your Vercel account settings and save it as `VERCEL_TOKEN`.
+
+### Branch protection (recommended)
+
+To enforce industrial workflow standards, require CI before merging to `main`:
+
+1. Open GitHub repository **Settings**.
+2. Go to **Branches**.
+3. Add/Edit branch protection rule for `main`.
+4. Enable **Require a pull request before merging**.
+5. Enable **Require status checks to pass before merging**.
+6. Select status check: `Build Validation`.
+7. Save changes.
 
 ## Customization
 
