@@ -2,10 +2,13 @@ name: CI/CD
 
 on:
   pull_request:
-    branches: ["main"]
+    branches: ["**"]
   push:
-    branches: ["main"]
+    branches: ["**"]
   workflow_dispatch:
+
+permissions:
+  contents: read
 
 concurrency:
   group: ci-cd-${{ github.ref }}
@@ -35,7 +38,7 @@ jobs:
   deploy:
     name: Deploy to Vercel (Production)
     needs: ci
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && secrets.VERCEL_TOKEN != '' && secrets.VERCEL_ORG_ID != '' && secrets.VERCEL_PROJECT_ID != ''
     runs-on: ubuntu-latest
     environment: production
 
