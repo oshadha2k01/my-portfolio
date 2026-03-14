@@ -498,7 +498,8 @@ export default function Project() {
                                           </svg>
                                           GitHub
                                         </a>
-                                        {projectImage.homepage && (
+                                        {/* Live Demo button hidden for ITPM-Project (reserved for future use) */}
+                                        {projectImage.homepage && repo.name !== "ITPM-Project" && (
                                           <a
                                             href={projectImage.homepage}
                                             target="_blank"
