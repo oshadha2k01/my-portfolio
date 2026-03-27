@@ -239,7 +239,7 @@ export default function Contact() {
                   </svg>
                   <div>
                     <span className="block font-medium">Location:</span>
-                    <span>Kuliyapitiya, North Western Province, Sri Lanka</span>
+                    <span>Malabe, Western Province, Sri Lanka</span>
                   </div>
                 </div>
 
