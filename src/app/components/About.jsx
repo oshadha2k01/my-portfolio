@@ -9,7 +9,7 @@ import {
 import {
   SiJavascript, SiReact, SiRedux, SiNodedotjs, SiHtml5, SiCss3, SiMongodb,
   SiMysql, SiTailwindcss, SiPhp, SiBootstrap, SiFigma, SiTypescript,
-  SiNextdotjs, SiPostman, SiGit, SiGithubactions,
+  SiNextdotjs, SiPostman, SiGit, SiGithubactions, SiPython, SiAmazon, SiFirebase,
 } from "react-icons/si";
 
 const GITHUB_USER = 'oshadha2k01';
@@ -182,20 +182,23 @@ export default function About() {
         { name: 'Node.js', icon: SiNodedotjs, color: '#339933' },
         { name: 'PHP',     icon: SiPhp,       color: '#777BB4' },
         { name: 'Java',    icon: FaJava,      color: '#007396' },
+        { name: 'Python',  icon: SiPython,    color: '#3776AB' },
       ],
     },
     {
       label: 'Database', color: 'text-white',
       skills: [
-        { name: 'MongoDB', icon: SiMongodb, color: '#47A248' },
-        { name: 'MySQL',   icon: SiMysql,   color: '#4479A1' },
+        { name: 'MongoDB',  icon: SiMongodb,  color: '#47A248' },
+        { name: 'MySQL',    icon: SiMysql,    color: '#4479A1' },
+        { name: 'Firebase', icon: SiFirebase, color: '#FFA000' },
       ],
     },
     {
       label: 'DevOps & Cloud', color: 'text-white',
       skills: [
-        { name: 'Git',   icon: SiGit,          color: '#F05032' },
-        { name: 'CI/CD', icon: SiGithubactions, color: '#2088FF' },
+        { name: 'Git',   icon: SiGit,           color: '#F05032' },
+        { name: 'CI/CD', icon: SiGithubactions,  color: '#2088FF' },
+        { name: 'AWS',   icon: SiAmazon,        color: '#FF9900' },
       ],
     },
     {
