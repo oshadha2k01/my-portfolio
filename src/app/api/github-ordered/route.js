@@ -98,6 +98,9 @@ export async function GET() {
     
     // Define specific order for priority repositories
     const priorityOrder = [
+      "NextStop-Reaserach-backend",
+      "NextStop-Reaserach-frontend",
+      "NextStop-DriverApp",
       "ITPM-Project",
       "movie-explorer",
       "WanderVibe", 

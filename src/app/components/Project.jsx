@@ -10,6 +10,10 @@ import {
   FaJava,
   FaServer,
   FaGoogle,
+  FaCloud,
+  FaBrain,
+  FaVolumeUp,
+  FaMicrochip,
 } from "react-icons/fa";
 import {
   SiMongodb,
@@ -33,6 +37,14 @@ import {
   SiNextdotjs,
   SiTypescript,
   SiSocketdotio,
+  SiFlask,
+  SiScikitlearn,
+  SiTensorflow,
+  SiPytorch,
+  SiFlutter,
+  SiGooglemaps,
+  SiAndroid,
+  SiFirebase,
 } from "react-icons/si";
 
 function SliderButton({ direction, onClick, label }) {
@@ -223,6 +235,24 @@ export default function Project() {
         description:
           "GalaxyX Cinema is a MERN stack-based movie theater management system featuring movie management, booking management, food ordering, and a movie buddy system for enhanced customer engagement.",
         displayName: "GalaxyX Cinema",
+      },
+      "NextStop-Reaserach-backend": {
+        image: "/images/repos/NextStop-Reaserach-backend.png",
+        description:
+          "Final Year Research Project Core using microservices in backend and machine learning and Deep Learning and Admin and Super Admin Frontend and all backend handle here.",
+        displayName: "NextStop Core",
+      },
+      "NextStop-Reaserach-frontend": {
+        image: "/images/repos/NextStop-Reaserach-frontend.png",
+        description:
+          "Passenger Mobile App featuring ETA Prediction, Journey Prediction, Driver and Passenger Interaction, Real-time Seat Occupancy monitoring, Crowd Prediction using IoT data, Fare Calculation, Feedbacks, Complaints, and Route details.",
+        displayName: "NexStop Passenger App",
+      },
+      "NextStop-DriverApp": {
+        image: "/images/repos/NextStop-DriverApp.png",
+        description:
+          "Professional Driver Application with Strong Authentication, IoT device integration, real-time Passenger engagement via Websockets with alert sounds, and comprehensive Driver management tools.",
+        displayName: "NextStop Driver App",
       },
       WanderVibe: {
         image: "/images/repos/WanderVibe.png",
@@ -514,7 +544,146 @@ export default function Project() {
                                   </div>
                                 </div>
                                 <div className="text-sm sm:text-base text-gray-300 mb-3 sm:mb-4 flex-grow">
-                                  {repo.name === "ITPM-Project" ? (
+                                  {repo.name === "NextStop-Reaserach-backend" ? (
+                                    <>
+                                      <p>
+                                        Final Year Research Project Core using
+                                        microservices in backend and machine
+                                        learning and Deep Learning and Admin and
+                                        Super Admin Frontend and all backend
+                                        handle here.
+                                      </p>
+
+                                      <div className="mt-2">
+                                        <strong>Tech Stack:</strong>
+                                        <div className="grid grid-cols-2 gap-2 mt-2">
+                                          <div className="flex items-center">
+                                            <FaNodeJs className="text-[#339933] text-xl mr-2" />
+                                            <span>Node.js</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <SiExpress className="text-white text-xl mr-2" />
+                                            <span>Express.js</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <FaServer className="text-[#FF6C37] text-xl mr-2" />
+                                            <span>REST APIs</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <SiFlask className="text-white text-xl mr-2" />
+                                            <span>Flask API</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <SiPython className="text-[#3776AB] text-xl mr-2" />
+                                            <span>Python</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <SiScikitlearn className="text-[#F7931E] text-xl mr-2" />
+                                            <span>Machine Learning</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <FaBrain className="text-[#F7931E] text-xl mr-2" />
+                                            <span>XGBoost</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <SiTensorflow className="text-[#FF6F00] text-xl mr-2" />
+                                            <span>DeepLearning</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <SiMongodb className="text-[#47A248] text-xl mr-2" />
+                                            <span>MongoDB</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <FaCloud className="text-[#00BFFF] text-xl mr-2" />
+                                            <span>Cloud</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <SiPostman className="text-[#FF6C37] text-xl mr-2" />
+                                            <span>Postman</span>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </>
+                                  ) : repo.name === "NextStop-Reaserach-frontend" ? (
+                                    <>
+                                      <p>
+                                        Passenger Mobile App featuring ETA
+                                        Prediction, Journey Prediction, Driver
+                                        and Passenger Interaction, Real-time
+                                        Seat Occupancy monitoring, Crowd
+                                        Prediction using IoT data, Fare
+                                        Calculation, Feedbacks, Complaints, and
+                                        Route details.
+                                      </p>
+
+                                      <div className="mt-2">
+                                        <strong>Tech Stack:</strong>
+                                        <div className="grid grid-cols-2 gap-2 mt-2">
+                                          <div className="flex items-center">
+                                            <SiFlutter className="text-[#02569B] text-xl mr-2" />
+                                            <span>Flutter</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <SiGooglemaps className="text-[#4285F4] text-xl mr-2" />
+                                            <span>Google Map API</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <FaServer className="text-[#FF6C37] text-xl mr-2" />
+                                            <span>API</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <SiAndroid className="text-[#3DDC84] text-xl mr-2" />
+                                            <span>Android SDK</span>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </>
+                                  ) : repo.name === "NextStop-DriverApp" ? (
+                                    <>
+                                      <p>
+                                        Professional Driver Application with
+                                        Strong Authentication, IoT device
+                                        integration, real-time Passenger
+                                        engagement via Websockets with alert
+                                        sounds, and comprehensive Driver
+                                        management tools.
+                                      </p>
+
+                                      <div className="mt-2">
+                                        <strong>Tech Stack:</strong>
+                                        <div className="grid grid-cols-2 gap-2 mt-2">
+                                          <div className="flex items-center">
+                                            <SiFlutter className="text-[#02569B] text-xl mr-2" />
+                                            <span>Flutter</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <SiFirebase className="text-[#FFCA28] text-xl mr-2" />
+                                            <span>Firebase</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <SiSocketdotio className="text-[#a3a3a3] text-xl mr-2" />
+                                            <span>Websocket</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <SiGooglemaps className="text-[#4285F4] text-xl mr-2" />
+                                            <span>Google Map API</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <FaVolumeUp className="text-[#a3a3a3] text-xl mr-2" />
+                                            <span>Sound Alerts</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <FaMicrochip className="text-[#a3a3a3] text-xl mr-2" />
+                                            <span>IoT</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <SiAndroid className="text-[#3DDC84] text-xl mr-2" />
+                                            <span>Android SDK</span>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </>
+                                  ) : repo.name === "ITPM-Project" ? (
                                     <>
                                       <p>
                                         GalaxyX Cinema is a MERN stack-based
