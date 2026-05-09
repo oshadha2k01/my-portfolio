@@ -254,6 +254,12 @@ export default function Project() {
           "Professional Driver Application with Strong Authentication, IoT device integration, real-time Passenger engagement via Websockets with alert sounds, and comprehensive Driver management tools.",
         displayName: "NextStop Driver App",
       },
+      "NextStop": {
+        image: "/images/repos/NextStop.png",
+        description:
+          "Comprehensive Project Portfolio providing a complete overview of the ecosystem. Includes project documentation, presentations, research papers, team details, supervisor information, and project milestones/timeline.",
+        displayName: "NextStop Portfolio",
+      },
       WanderVibe: {
         image: "/images/repos/WanderVibe.png",
         description:
@@ -679,6 +685,36 @@ export default function Project() {
                                           <div className="flex items-center">
                                             <SiAndroid className="text-[#3DDC84] text-xl mr-2" />
                                             <span>Android SDK</span>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </>
+                                  ) : repo.name === "NextStop" ? (
+                                    <>
+                                      <p>
+                                        Comprehensive Project Portfolio
+                                        providing a complete overview of the
+                                        ecosystem. Includes project
+                                        documentation, presentations, research
+                                        papers, team details, supervisor
+                                        information, and project
+                                        milestones/timeline.
+                                      </p>
+
+                                      <div className="mt-2">
+                                        <strong>Tech Stack:</strong>
+                                        <div className="grid grid-cols-2 gap-2 mt-2">
+                                          <div className="flex items-center">
+                                            <SiTypescript className="text-[#3178C6] text-xl mr-2" />
+                                            <span>TypeScript</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <SiNextdotjs className="text-white text-xl mr-2" />
+                                            <span>Next.js</span>
+                                          </div>
+                                          <div className="flex items-center">
+                                            <SiTailwindcss className="text-[#06B6D4] text-xl mr-2" />
+                                            <span>Tailwind CSS</span>
                                           </div>
                                         </div>
                                       </div>
