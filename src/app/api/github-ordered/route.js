@@ -98,8 +98,8 @@ export async function GET() {
     
     // Define specific order for priority repositories
     const priorityOrder = [
-      "NextStop-Reaserach-backend",
-      "NextStop-Reaserach-frontend",
+      "NextStop-Research-backend",
+      "NextStop-Research-App",
       "NextStop-DriverApp",
       "NextStop",
       "ITPM-Project",
@@ -138,6 +138,8 @@ export async function GET() {
       forks_count: repo.forks_count,
       updated_at: repo.updated_at
     }));
+
+    console.log("Fetched Repository Names:", formattedRepos.map(r => r.name));
     
     // Custom sort function: priority repos first, then the rest by update date
     formattedRepos.sort((a, b) => {

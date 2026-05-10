@@ -236,14 +236,14 @@ export default function Project() {
           "GalaxyX Cinema is a MERN stack-based movie theater management system featuring movie management, booking management, food ordering, and a movie buddy system for enhanced customer engagement.",
         displayName: "GalaxyX Cinema",
       },
-      "NextStop-Reaserach-backend": {
-        image: "/images/repos/NextStop-Reaserach-backend.png",
+      "NextStop-Research-backend": {
+        image: "/images/repos/NextStop-Research-backend.png",
         description:
           "Final Year Research Project Core using microservices in backend and machine learning and Deep Learning and Admin and Super Admin Frontend and all backend handle here.",
         displayName: "NextStop Core",
       },
-      "NextStop-Reaserach-frontend": {
-        image: "/images/repos/NextStop-Reaserach-frontend.png",
+      "NextStop-Research-App": {
+        image: "/images/repos/NextStop-Research-App.png",
         description:
           "Passenger Mobile App featuring ETA Prediction, Journey Prediction, Driver and Passenger Interaction, Real-time Seat Occupancy monitoring, Crowd Prediction using IoT data, Fare Calculation, Feedbacks, Complaints, and Route details.",
         displayName: "NexStop Passenger App",
@@ -550,7 +550,7 @@ export default function Project() {
                                   </div>
                                 </div>
                                 <div className="text-sm sm:text-base text-gray-300 mb-3 sm:mb-4 flex-grow">
-                                  {repo.name === "NextStop-Reaserach-backend" ? (
+                                  {repo.name === "NextStop-Research-backend" ? (
                                     <>
                                       <p>
                                         Final Year Research Project Core using
@@ -610,7 +610,7 @@ export default function Project() {
                                         </div>
                                       </div>
                                     </>
-                                  ) : repo.name === "NextStop-Reaserach-frontend" ? (
+                                  ) : repo.name === "NextStop-Research-App" ? (
                                     <>
                                       <p>
                                         Passenger Mobile App featuring ETA
